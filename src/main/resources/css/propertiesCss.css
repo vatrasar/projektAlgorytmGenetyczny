@@ -29,3 +29,7 @@
     -fx-background-color: #0d91ca;
     -fx-text-fill: White;
 }
+.wrappedPane
+{
+    -fx-background-color: White;
+}
