@@ -1,0 +1,20 @@
+.label
+{
+    -fx-background-color: #E5E5E5;
+    -fx-text-fill: #383838;
+    -fx-text-alignment: left;
+}
+#title
+{
+    -fx-text-fill: green;
+    -fx-background-color: white;
+}
+.startButton
+{
+  -fx-text-fill: White;
+    -fx-background-color: #0fa2e2;
+}
+.startButton:hover
+{
+    -fx-background-color: #0d91ca;
+}

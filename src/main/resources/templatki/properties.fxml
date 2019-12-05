@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="529.0" prefWidth="652.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="templatki.Properties">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="529.0" prefWidth="652.0">
+      <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="449.0">
+          <children>
+            <Label id="title" alignment="TOP_LEFT" contentDisplay="TOP" text="Ustawienia" textFill="#0052cc" wrapText="false">
+              <font>
+                <Font name="BerenisADFPro-Bold" size="30.0" />
+              </font>
+            </Label>
+          </children>
+          <padding>
+            <Insets left="30.0" />
+          </padding>
+          <VBox.margin>
+            <Insets bottom="10.0" />
+          </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="298.0" prefWidth="552.0">
+          <children>
+            <VBox id="" prefHeight="273.0" prefWidth="256.0">
+              <children>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Liczba Generacji" />
+                    <TextField prefWidth="200.0">
+                      <VBox.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </VBox.margin>
+                    </TextField>
+                  </children>
+                </VBox>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Rodzaj selekcji" />
+                    <ChoiceBox prefWidth="256.0" VBox.margin="$x1">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                  </children>
+                  <VBox.margin>
+                    <Insets top="20.0" />
+                  </VBox.margin>
+                </VBox>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Funkcja" />
+                    <ChoiceBox prefWidth="266.0" VBox.margin="$x1">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                  </children>
+                  <VBox.margin>
+                    <Insets top="20.0" />
+                  </VBox.margin>
+                </VBox>
+                <VBox prefHeight="89.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="38.0" prefWidth="279.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" underline="false" wrapText="true">
+                      <VBox.margin>
+                        <Insets top="20.0" />
+                      </VBox.margin>
+                    </Label>
+                    <TextField prefHeight="22.0" prefWidth="200.0">
+                      <VBox.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </VBox.margin>
+                    </TextField>
+                  </children>
+                </VBox>
+              </children>
+              <HBox.margin>
+                <Insets right="10.0" />
+              </HBox.margin>
+            </VBox>
+            <VBox id="" prefHeight="294.0000999999975" prefWidth="235.0">
+              <children>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Prawdopodobieństwo krzyżowania" />
+                    <TextField prefWidth="200.0" VBox.margin="$x1" />
+                  </children>
+                </VBox>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Prawdopodobieństwo mutacji" />
+                    <TextField prefWidth="200.0">
+                      <VBox.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </VBox.margin>
+                    </TextField>
+                  </children>
+                  <VBox.margin>
+                    <Insets top="20.0" />
+                  </VBox.margin>
+                </VBox>
+                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                  <children>
+                    <Label text="Precyzja" />
+                    <TextField prefWidth="200.0">
+                      <VBox.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </VBox.margin>
+                    </TextField>
+                  </children>
+                  <VBox.margin>
+                    <Insets top="20.0" />
+                  </VBox.margin>
+                </VBox>
+              </children>
+            </VBox>
+          </children>
+          <padding>
+            <Insets left="20.0" right="20.0" />
+          </padding>
+        </HBox>
+        <HBox alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="552.0">
+          <children>
+            <Button id="" mnemonicParsing="false" prefHeight="32.0" prefWidth="249.0" styleClass="startButton" text="Rozpocznij test">
+              <font>
+                <Font size="20.0" />
+              </font>
+              <HBox.margin>
+                <Insets left="10.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+          <stylesheets>
+            <URL value="@../css/propertiesCss.css" />
+          </stylesheets>
+          <VBox.margin>
+            <Insets top="30.0" />
+          </VBox.margin>
+        </HBox>
+      </children>
+      <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+      </padding>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../css/propertiesCss.css" />
+  </stylesheets>
+</Pane>

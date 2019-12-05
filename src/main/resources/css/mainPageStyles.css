@@ -2,6 +2,24 @@
     -fx-background-color: #E5E5E5;
     -fx-text-fill: #383838;
     -fx-text-alignment: left;
+    -fx-background-radius: 0em;
+}
+.label
+{
+    -fx-background-color: #E5E5E5;
+    -fx-text-fill: #383838;
+    -fx-text-alignment: left;
+
+}
+
+.image
+{
+    -fx-background-color: #E5E5E5;
+}
+#menuBoczne
+{
+    -fx-background-color: #48A5EA;
+    -fx-text-fill: #383838;
 }
 
 .button:hover {
