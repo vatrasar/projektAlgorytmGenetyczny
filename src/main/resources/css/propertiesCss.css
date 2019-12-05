@@ -17,4 +17,15 @@
 .startButton:hover
 {
     -fx-background-color: #0d91ca;
+    -fx-text-fill: White;
+}
+.startButton:focused
+{
+    -fx-background-color: #0fa2e2;
+    -fx-text-fill: White;
+}
+.startButton:focused:hover
+{
+    -fx-background-color: #0d91ca;
+    -fx-text-fill: White;
 }

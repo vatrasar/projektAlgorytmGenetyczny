@@ -28,7 +28,7 @@
         <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wykresy" />
       </children>
     </VBox>
-    <StackPane layoutX="139.0" layoutY="0.0" prefHeight="529.0" prefWidth="651.9998779296875" />
+    <StackPane id="" fx:id="mainPane" layoutX="139.0" layoutY="1.0" prefHeight="529.0" prefWidth="651.9998779296875" />
   </children>
   <stylesheets>
     <URL value="@../../../css/mainPageStyles.css" />

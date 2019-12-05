@@ -101,7 +101,11 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Prawdopodobieństwo krzyżowania" />
-                    <TextField prefWidth="200.0" VBox.margin="$x1" />
+                    <TextField prefWidth="200.0">
+                      <VBox.margin>
+                        <Insets top="10.0" fx:id="x1" />
+                      </VBox.margin>
+                    </TextField>
                   </children>
                 </VBox>
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
@@ -162,6 +166,6 @@
     </VBox>
   </children>
   <stylesheets>
-    <URL value="@../css/propertiesCss.css" />
+    <URL value="@../../../css/propertiesCss.css" />
   </stylesheets>
 </Pane>
