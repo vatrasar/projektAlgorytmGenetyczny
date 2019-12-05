@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="529.0" prefWidth="652.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="templatki.Properties">
+<Pane prefHeight="529.0" prefWidth="652.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.PropertiesController">
   <children>
     <VBox layoutX="0.0" layoutY="0.0" prefHeight="529.0" prefWidth="652.0">
       <children>

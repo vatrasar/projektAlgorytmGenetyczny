@@ -15,7 +15,7 @@
       <children>
         <ImageView blendMode="SOFT_LIGHT" fitHeight="123.34684753417969" fitWidth="139.00000377104018" pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="image" visible="true">
           <image>
-            <Image url="@../images/logo.jpg" />
+            <Image url="@../../../images/logo.jpg" />
           </image>
         </ImageView>
         <Label alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu">
@@ -28,9 +28,9 @@
         <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wykresy" />
       </children>
     </VBox>
-    <Pane layoutX="139.0" layoutY="0.0" prefHeight="529.0" prefWidth="651.9998779296875" />
+    <StackPane layoutX="139.0" layoutY="0.0" prefHeight="529.0" prefWidth="651.9998779296875" />
   </children>
   <stylesheets>
-    <URL value="@../css/mainPageStyles.css" />
+    <URL value="@../../../css/mainPageStyles.css" />
   </stylesheets>
 </AnchorPane>
