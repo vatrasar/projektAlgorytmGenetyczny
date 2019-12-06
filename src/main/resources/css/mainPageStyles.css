@@ -4,7 +4,7 @@
     -fx-text-alignment: left;
     -fx-background-radius: 0em;
 }
-.label
+.menuLabel
 {
     -fx-background-color: #E5E5E5;
     -fx-text-fill: #383838;

@@ -18,7 +18,7 @@
             <Image url="@../../../images/logo.jpg" />
           </image>
         </ImageView>
-        <Label alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu">
+        <Label id="menuLabel" alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu">
           <font>
             <Font size="20.0" />
           </font>

@@ -1,6 +1,6 @@
-.label
+.labelA
 {
-    -fx-background-color: #E5E5E5;
+    -fx-background-color: White;
     -fx-text-fill: #383838;
     -fx-text-alignment: left;
 }
@@ -32,4 +32,15 @@
 .wrappedPane
 {
     -fx-background-color: White;
+}
+.context-menu  {
+    -fx-pref-width: 256;
+    -fx-background-color: white;
+    -fx-border-color: White;
+}
+.choice-box
+{
+    -fx-pref-width: 256;
+    -fx-background-color: #E5E5E5;
+    -fx-border-color: grey
 }

@@ -48,10 +48,10 @@
                     <Label text="Rodzaj selekcji" />
                     <ChoiceBox prefWidth="256.0" VBox.margin="$x1">
                       <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
+                        <FXCollections  fx:factory="observableArrayList">
+                          <String  fx:value="Proporcjonalna" />
+                          <String fx:value="Turniejowa miękka" />
+                          <String fx:value="Turniejowa twarda" />
                         </FXCollections>
                       </items>
                     </ChoiceBox>
@@ -66,9 +66,8 @@
                     <ChoiceBox prefWidth="266.0" VBox.margin="$x1">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
+                          <String fx:value="Funkcja schodkowa" />
+                          <String fx:value="Funkcja sferyczna" />
                         </FXCollections>
                       </items>
                     </ChoiceBox>
