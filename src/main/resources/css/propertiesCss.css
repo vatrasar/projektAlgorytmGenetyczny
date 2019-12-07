@@ -6,7 +6,7 @@
 }
 #title
 {
-    -fx-text-fill: green;
+    -fx-text-fill: #0fa2e2;
     -fx-background-color: white;
 }
 .startButton
@@ -36,11 +36,17 @@
 .context-menu  {
     -fx-pref-width: 256;
     -fx-background-color: white;
-    -fx-border-color: White;
+    -fx-border-color: Green;
 }
+.choice-box:focused  {
+    -fx-pref-width: 256;
+    -fx-background-color: white;
+    -fx-border-color: #0d91ca;
+}
+
 .choice-box
 {
     -fx-pref-width: 256;
-    -fx-background-color: #E5E5E5;
+    -fx-background-color: White;
     -fx-border-color: grey
 }

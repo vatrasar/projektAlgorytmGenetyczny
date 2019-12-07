@@ -2,15 +2,13 @@
 
 <?import java.lang.*?>
 <?import java.net.*?>
-<?import java.util.*?>
 <?import javafx.collections.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.PropertiesController">
+<Pane prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController">
   <children>
     <VBox layoutX="0.0" layoutY="0.0" prefHeight="529.0" prefWidth="652.0">
       <children>
@@ -29,9 +27,9 @@
             <Insets bottom="10.0" />
           </VBox.margin>
         </HBox>
-        <HBox alignment="CENTER" prefHeight="298.0" prefWidth="552.0">
+        <HBox alignment="CENTER" prefHeight="322.0" prefWidth="552.0">
           <children>
-            <VBox id="" prefHeight="273.0" prefWidth="256.0">
+            <VBox id="" prefHeight="302.0" prefWidth="256.0">
               <children>
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
@@ -48,8 +46,8 @@
                     <Label text="Rodzaj selekcji" />
                     <ChoiceBox prefWidth="256.0" VBox.margin="$x1">
                       <items>
-                        <FXCollections  fx:factory="observableArrayList">
-                          <String  fx:value="Proporcjonalna" />
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Proporcjonalna" />
                           <String fx:value="Turniejowa miękka" />
                           <String fx:value="Turniejowa twarda" />
                         </FXCollections>
@@ -76,9 +74,9 @@
                     <Insets top="20.0" />
                   </VBox.margin>
                 </VBox>
-                <VBox prefHeight="89.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="110.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="38.0" prefWidth="279.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" underline="false" wrapText="true">
+                    <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" underline="false" wrapText="true">
                       <VBox.margin>
                         <Insets top="20.0" />
                       </VBox.margin>

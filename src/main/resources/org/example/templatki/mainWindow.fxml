@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="529.0001068115234" prefWidth="790.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.MainWindowControler">
+<AnchorPane prefHeight="529.0001068115234" prefWidth="790.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.controllers.MainWindowControler">
   <children>
     <VBox id="menuBoczne" layoutX="0.0" layoutY="1.0" prefHeight="528.0" prefWidth="139.0">
       <children>

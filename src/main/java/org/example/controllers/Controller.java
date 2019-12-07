@@ -1,7 +1,8 @@
-package org.example;
+package org.example.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import org.example.App;
 
 import java.io.IOException;
 
