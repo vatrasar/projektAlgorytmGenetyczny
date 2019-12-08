@@ -14,6 +14,7 @@ public class MainWindowControler implements Initializable, Controller {
 
     @FXML
     StackPane mainPane;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

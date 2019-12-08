@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController">
+<Pane prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.controllers.PropertiesController">
   <children>
     <VBox layoutX="0.0" layoutY="0.0" prefHeight="529.0" prefWidth="652.0">
       <children>
@@ -34,7 +34,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Liczba Generacji" />
-                    <TextField prefWidth="200.0">
+                    <TextField id="generationsNumber" fx:id="generationsNumberTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="10.0" fx:id="x1" />
                       </VBox.margin>
@@ -44,7 +44,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Rodzaj selekcji" />
-                    <ChoiceBox prefWidth="256.0" VBox.margin="$x1">
+                    <ChoiceBox id="selectionType" fx:id="selectionTypeChoiceBox" prefWidth="256.0" VBox.margin="$x1">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Proporcjonalna" />
@@ -61,7 +61,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Funkcja" />
-                    <ChoiceBox prefWidth="266.0" VBox.margin="$x1">
+                    <ChoiceBox id="functionType" fx:id="functionTypeChoiceBox" prefWidth="266.0" VBox.margin="$x1">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Funkcja schodkowa" />
@@ -81,7 +81,7 @@
                         <Insets top="20.0" />
                       </VBox.margin>
                     </Label>
-                    <TextField prefHeight="22.0" prefWidth="200.0">
+                    <TextField id="probTournamentWin" fx:id="probTournamentWinTextField" prefHeight="22.0" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="10.0" fx:id="x1" />
                       </VBox.margin>
@@ -98,7 +98,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Prawdopodobieństwo krzyżowania" />
-                    <TextField prefWidth="200.0">
+                    <TextField id="probMutation" fx:id="probCrossTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="10.0" fx:id="x1" />
                       </VBox.margin>
@@ -108,7 +108,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Prawdopodobieństwo mutacji" />
-                    <TextField prefWidth="200.0">
+                    <TextField id="probCross" fx:id="probMutationTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="10.0" fx:id="x1" />
                       </VBox.margin>
@@ -121,7 +121,7 @@
                 <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label text="Precyzja" />
-                    <TextField prefWidth="200.0">
+                    <TextField id="precision" fx:id="precisionTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="10.0" fx:id="x1" />
                       </VBox.margin>
