@@ -43,8 +43,9 @@ public class PropertiesController implements Initializable {
         String probCross=probCrossTextField.getText();
         String probMutation=probMutationTextField.getText();
         String precisionText=precisionTextField.getText();
+        AgSettings agSettings=null;
         try {
-            AgSettings agSettings=new AgSettings(Integer.parseInt(generationsNumber),selectionType, functionType,Double.parseDouble(probTournamentWin),Double.parseDouble(probMutation),Double.parseDouble(probCross),Double.parseDouble(precisionText));
+            agSettings=new AgSettings(Integer.parseInt(generationsNumber),selectionType, functionType,Double.parseDouble(probTournamentWin),Double.parseDouble(probMutation),Double.parseDouble(probCross),Integer.parseInt(precisionText));
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Błąd danych");
@@ -68,16 +69,18 @@ public class PropertiesController implements Initializable {
         setTextFieldsForNumbers();
         Tooltip tooltip=new Tooltip("Wartości w procentach");
         tooltip.setShowDelay(Duration.millis(10));
-
+        Tooltip precisionTooltip=new Tooltip("Do którego miejsca po przecinku");
+        precisionTooltip.setShowDelay(Duration.millis(10));
         probTournamentWinTextField.setTooltip(tooltip);
         probMutationTextField.setTooltip(tooltip);
         probCrossTextField.setTooltip(tooltip);
+        precisionTextField.setTooltip(precisionTooltip);
 
     }
 
     private void setTextFieldsForNumbers() {
         generationsNumberTextField.textProperty().addListener(new DataValidation(generationsNumberTextField,4,true));
-        precisionTextField.textProperty().addListener(new DataValidation(precisionTextField,5,false));
+        precisionTextField.textProperty().addListener(new DataValidation(precisionTextField,5,true));
         probCrossTextField.textProperty().addListener(new DataValidation(probCrossTextField,5,false));
         probMutationTextField.textProperty().addListener(new DataValidation(probMutationTextField,5,false));
         probTournamentWinTextField.textProperty().addListener(new DataValidation(probTournamentWinTextField,5,false));
@@ -86,7 +89,7 @@ public class PropertiesController implements Initializable {
     private void setDefaultValues() {
         selectionTypeChoiceBox.setValue(selectionTypeChoiceBox.getItems().get(0));
         functionTypeChoiceBox.setValue(functionTypeChoiceBox.getItems().get(0));
-        precisionTextField.setText("0.1");
+        precisionTextField.setText("3");
         probCrossTextField.setText("70");
         probMutationTextField.setText("0.1");
         probTournamentWinTextField.setText("80");

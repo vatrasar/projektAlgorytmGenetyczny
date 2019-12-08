@@ -1,5 +1,6 @@
 package org.example.ag;
 
+import javafx.css.Match;
 import org.example.ag.functions.FunctionType;
 import org.example.ag.functions.SphericalFunction;
 import org.example.ag.functions.StepFunction;
@@ -17,9 +18,9 @@ public class AgSettings {
      double probTournamentWin;
      double probMutation;
      double probCross;
-     double precision;
+     int precision;
 
-     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, double precision) throws Exception  {
+     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision) throws Exception  {
           this.generationsNumber = generationsNumber;
           this.selectionType = determineSelectionType(selectionType);
           this.functionType = determineFunctionType(functionType);
