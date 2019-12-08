@@ -33,6 +33,8 @@ public class PropertiesController implements Initializable {
     @FXML
     Button startButton;
     @FXML
+    TextField funcDiminsionalTextField;
+    @FXML
     public void startTest()
     {
         //get data from fields
@@ -43,14 +45,15 @@ public class PropertiesController implements Initializable {
         String probCross=probCrossTextField.getText();
         String probMutation=probMutationTextField.getText();
         String precisionText=precisionTextField.getText();
+        String fundimensional=funcDiminsionalTextField.getText();
         AgSettings agSettings=null;
         try {
-            agSettings=new AgSettings(Integer.parseInt(generationsNumber),selectionType, functionType,Double.parseDouble(probTournamentWin),Double.parseDouble(probMutation),Double.parseDouble(probCross),Integer.parseInt(precisionText));
+            agSettings=new AgSettings(Integer.parseInt(generationsNumber),selectionType, functionType,Double.parseDouble(probTournamentWin),Double.parseDouble(probMutation),Double.parseDouble(probCross),Integer.parseInt(precisionText),Integer.parseInt(fundimensional));
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Błąd danych");
             alert.setHeaderText("Błąd danych");
-            alert.setContentText("Wartości procentowe nie mogą przekraczać 100%");
+            alert.setContentText(e.getMessage());
 
             alert.showAndWait();
         }
@@ -84,6 +87,7 @@ public class PropertiesController implements Initializable {
         probCrossTextField.textProperty().addListener(new DataValidation(probCrossTextField,5,false));
         probMutationTextField.textProperty().addListener(new DataValidation(probMutationTextField,5,false));
         probTournamentWinTextField.textProperty().addListener(new DataValidation(probTournamentWinTextField,5,false));
+        funcDiminsionalTextField.textProperty().addListener(new DataValidation(funcDiminsionalTextField,2,true));
     }
 
     private void setDefaultValues() {
@@ -94,5 +98,6 @@ public class PropertiesController implements Initializable {
         probMutationTextField.setText("0.1");
         probTournamentWinTextField.setText("80");
         generationsNumberTextField.setText("100");
+        funcDiminsionalTextField.setText("1");
     }
 }

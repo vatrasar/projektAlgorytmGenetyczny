@@ -20,29 +20,34 @@ public class AgSettings {
      double probCross;
      int precision;
 
-     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision) throws Exception  {
+
+     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision,int funDimensional) throws Exception  {
           this.generationsNumber = generationsNumber;
           this.selectionType = determineSelectionType(selectionType);
-          this.functionType = determineFunctionType(functionType);
+          this.functionType = determineFunctionType(functionType,funDimensional);
           this.probTournamentWin = probTournamentWin/100;
           this.probMutation = probMutation/100;
           this.probCross = probCross/100;
           this.precision = precision;
           if(this.probCross>1 || this.probTournamentWin>1 || this.probMutation>1)
           {
-               throw new Exception();
+               throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
+          }
+          if(funDimensional==0)
+          {
+               throw new Exception("Wymiar funkcji musi mieć wartość conajmniej 1.");
           }
      }
 
-     private FunctionType determineFunctionType(String functionType) {
+     private FunctionType determineFunctionType(String functionType,int dimensional ) {
           switch (functionType)
           {
                case "Funkcja schodkowa":
-                    return new StepFunction();
+                    return new StepFunction(dimensional);
                case "Funkcja sferyczna":
-                    return new SphericalFunction();
+                    return new SphericalFunction(dimensional);
           }
-          return new SphericalFunction();
+          return new SphericalFunction(dimensional);
      }
 
      private SelcetionType determineSelectionType(String selectionType) {
