@@ -8,11 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import lombok.Setter;
 import org.example.ag.AgSettings;
 import org.example.ag.AgThread;
 import org.example.utils.DataValidation;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -36,7 +39,8 @@ public class PropertiesController1 implements Controller, Initializable {
     TextField probCrossTextField;
     @FXML
     TextField probMutationTextField;
-
+    @FXML
+    TextField seedDirectoryTextField;
     @FXML
     Button nextButton;
     StackPane mainPane;
@@ -85,6 +89,16 @@ public class PropertiesController1 implements Controller, Initializable {
     {
         mainPane.getChildren().clear();
         mainPane.getChildren().add(perviousPage);
+    }
+
+    public void chooseSeedDirectory()
+    {
+        FileChooser fileChooser=new FileChooser();
+        fileChooser.setTitle("Wybór lokalizacji ziarna");
+        File file=fileChooser.showOpenDialog(new Stage());
+        seedDirectoryTextField.setText(file.getAbsolutePath());
+
+
     }
     private void setTextFieldsForNumbers() {
 
