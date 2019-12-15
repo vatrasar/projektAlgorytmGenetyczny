@@ -9,28 +9,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="529.0001068115234" prefWidth="790.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.controllers.MainWindowControler">
+<HBox prefHeight="529.0001068115234" prefWidth="790.9998779296875" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.example.controllers.MainWindowControler">
   <children>
-    <VBox id="menuBoczne" layoutX="0.0" layoutY="1.0" prefHeight="528.0" prefWidth="139.0">
+    <VBox id="menuBoczne" prefHeight="528.0" prefWidth="139.0" HBox.hgrow="ALWAYS">
       <children>
-        <ImageView blendMode="SOFT_LIGHT" fitHeight="123.34684753417969" fitWidth="139.00000377104018" pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="image" visible="true">
+        <ImageView blendMode="SOFT_LIGHT" fitHeight="123.34684753417969" fitWidth="139.00000377104018" pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="image" visible="true" VBox.vgrow="ALWAYS">
           <image>
             <Image url="@../../../images/logo.jpg" />
           </image>
         </ImageView>
-        <Label id="menuLabel" alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu">
+        <Label id="menuLabel" alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu" VBox.vgrow="ALWAYS">
           <font>
             <Font size="20.0" />
           </font>
         </Label>
-        <Button cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Ustawinia" textOverrun="CLIP" />
-        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wyniki" />
-        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wykresy" />
+        <Button cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Ustawinia" textOverrun="CLIP" VBox.vgrow="ALWAYS" />
+        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wyniki" VBox.vgrow="ALWAYS" />
+        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" text="Wykresy" VBox.vgrow="ALWAYS" />
       </children>
     </VBox>
-    <StackPane id="" fx:id="mainPane" layoutX="139.0" layoutY="1.0" prefHeight="529.0" prefWidth="651.9998779296875" />
+    <StackPane id="" fx:id="mainPane" prefHeight="529.0" prefWidth="651.9998779296875" HBox.hgrow="ALWAYS" />
   </children>
   <stylesheets>
     <URL value="@../../../css/mainPageStyles.css" />
   </stylesheets>
-</AnchorPane>
+</HBox>

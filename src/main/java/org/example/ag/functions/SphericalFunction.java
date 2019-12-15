@@ -4,4 +4,8 @@ public class SphericalFunction extends FunctionType {
     public SphericalFunction(int funcDimensional) {
         super(funcDimensional);
     }
+
+    public SphericalFunction() {
+        super(1);
+    }
 }

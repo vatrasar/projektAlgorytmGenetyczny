@@ -1,6 +1,7 @@
 package org.example.ag;
 
 import javafx.css.Match;
+import lombok.Setter;
 import org.example.ag.functions.FunctionType;
 import org.example.ag.functions.SphericalFunction;
 import org.example.ag.functions.StepFunction;
@@ -12,42 +13,81 @@ import org.example.ag.selection.TournamentSoft;
 
 public class AgSettings {
 
-     int generationsNumber;
+     @Setter int generationsNumber;
      SelcetionType selectionType;
-     FunctionType functionType;
+     @Setter FunctionType functionType;
      double probTournamentWin;
      double probMutation;
      double probCross;
-     int precision;
+     @Setter int precision;
 
+     public void setSelectionType(String selectionType) {
+          this.selectionType = determineSelectionType(selectionType) ;
+     }
 
-     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision,int funDimensional) throws Exception  {
-          this.generationsNumber = generationsNumber;
-          this.selectionType = determineSelectionType(selectionType);
-          this.functionType = determineFunctionType(functionType,funDimensional);
-          this.probTournamentWin = probTournamentWin/100;
-          this.probMutation = probMutation/100;
-          this.probCross = probCross/100;
-          this.precision = precision;
-          if(this.probCross>1 || this.probTournamentWin>1 || this.probMutation>1)
-          {
+     public void setProbTournamentWin(double probTournamentWin) throws Exception {
+          if (probTournamentWin<=100) {
+               this.probTournamentWin = probTournamentWin;
+          } else {
                throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
           }
-          if(funDimensional==0)
-          {
+     }
+
+     public void setProbMutation(double probMutation) throws Exception {
+          if (probMutation<=100) {
+               this.probMutation = probMutation;
+          } else {
+               throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
+          }
+     }
+
+     public void setProbCross(double probCross) throws Exception {
+
+          if (probCross<=100) {
+               this.probCross = probCross;
+          }
+          else {
+               throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
+          }
+     }
+
+
+
+     public void setFunctionType(String functionType, int funDimensional) throws Exception {
+          if (funDimensional!=0) {
+               this.functionType=determineFunctionType(functionType);
+          } else {
                throw new Exception("Wymiar funkcji musi mieć wartość conajmniej 1.");
           }
      }
 
-     private FunctionType determineFunctionType(String functionType,int dimensional ) {
+     public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision, int funDimensional) throws Exception  {
+          this.generationsNumber = generationsNumber;
+          this.selectionType = determineSelectionType(selectionType);
+          setFunctionType(functionType,funDimensional);
+          setProbTournamentWin(probTournamentWin);
+          setProbMutation(probMutation);
+          setProbCross(probCross);
+          this.precision = precision;
+
+
+     }
+
+     public AgSettings() {
+     }
+     public void setFunctionDimensional(int dimensional)
+     {
+          functionType.setFuncDimensional(dimensional);
+     }
+     private FunctionType determineFunctionType(String functionType) {
           switch (functionType)
           {
                case "Funkcja schodkowa":
-                    return new StepFunction(dimensional);
+                    return new StepFunction();
                case "Funkcja sferyczna":
-                    return new SphericalFunction(dimensional);
+                    return new SphericalFunction();
           }
-          return new SphericalFunction(dimensional);
+          return new SphericalFunction();
      }
 
      private SelcetionType determineSelectionType(String selectionType) {

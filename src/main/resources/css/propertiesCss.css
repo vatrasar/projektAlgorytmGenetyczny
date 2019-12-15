@@ -50,3 +50,21 @@
     -fx-background-color: White;
     -fx-border-color: grey
 }
+
+#backButton{
+    -fx-background-radius:5em;
+    -fx-background-color: #0fa2e2;
+    -fx-text-fill: White;
+}
+
+#backButton:hover{
+    -fx-background-radius:5em;
+    -fx-background-color: #0d91ca;
+    -fx-text-fill: White;
+}
+
+#backButton:focused{
+    -fx-background-radius:5em;
+    -fx-background-color: #0fa2e2;
+    -fx-text-fill: White;
+}
