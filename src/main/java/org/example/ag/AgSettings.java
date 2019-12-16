@@ -1,15 +1,13 @@
 package org.example.ag;
 
-import javafx.css.Match;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.ag.functions.FunctionType;
-import org.example.ag.functions.SphericalFunction;
-import org.example.ag.functions.StepFunction;
 import org.example.ag.selection.Proportional;
 import org.example.ag.selection.SelcetionType;
 import org.example.ag.selection.TournamentHard;
 import org.example.ag.selection.TournamentSoft;
+
+import java.util.function.Function;
 
 @Getter
 public class AgSettings {
@@ -17,6 +15,7 @@ public class AgSettings {
      int generationsNumber;
      SelcetionType selectionType;
      @Setter FunctionType functionType;
+     int funDimensional;
      double probTournamentWin;
      double probMutation;
      double probCross;
@@ -97,19 +96,19 @@ public class AgSettings {
 
      public AgSettings() {
      }
-     public void setFunctionDimensional(int dimensional)
-     {
-          functionType.setFuncDimensional(dimensional);
+     public void setFunctionDimensional(int dimensional) throws Exception {
+          isBigerThen(dimensional,0,"Wymiar funkcji musi mieć wartość conajmniej 1.");
+          this.funDimensional=dimensional;
      }
      private FunctionType determineFunctionType(String functionType) {
           switch (functionType)
           {
                case "Funkcja schodkowa":
-                    return new StepFunction();
+                    return FunctionType.STEP_FUNCTION;
                case "Funkcja sferyczna":
-                    return new SphericalFunction();
+                    return FunctionType.SPHERICAL_FUNCTION;
           }
-          return new SphericalFunction();
+          return FunctionType.SPHERICAL_FUNCTION;
      }
 
      private SelcetionType determineSelectionType(String selectionType) {
