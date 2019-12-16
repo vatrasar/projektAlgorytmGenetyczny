@@ -28,21 +28,10 @@ public class PropertiesController1 implements Controller, Initializable {
     @FXML
     TextField funcDiminsionalTextField;
 
-    @FXML
-    TextField generationsNumberTextField;
-    @FXML
-    ChoiceBox selectionTypeChoiceBox;
-    @FXML
-    ChoiceBox functionTypeChoiceBox;
 
     @FXML
-    TextField probCrossTextField;
-    @FXML
-    TextField probMutationTextField;
-    @FXML
     TextField seedDirectoryTextField;
-    @FXML
-    Button nextButton;
+
     StackPane mainPane;
     @Setter VBox  perviousPage;
     AgSettings agSettings;
@@ -67,8 +56,10 @@ public class PropertiesController1 implements Controller, Initializable {
 
         String precisionText=precisionTextField.getText();
         String fundimensional=funcDiminsionalTextField.getText();
+        String[] properties={probTournamentWin,precisionText,fundimensional};
 
         try {
+            isStringsEmpty(properties);//sprawdzam czy nie ma jakis pustych pol
             agSettings.setPrecision(Integer.parseInt(precisionText));
             agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
             agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
@@ -99,6 +90,15 @@ public class PropertiesController1 implements Controller, Initializable {
         seedDirectoryTextField.setText(file.getAbsolutePath());
 
 
+    }
+    private void isStringsEmpty(String[] properties) throws Exception {
+        for(String property:properties)
+        {
+            if(property.isEmpty())
+            {
+                throw new Exception("Wszystkie pola muszą być uzupełnione");
+            }
+        }
     }
     private void setTextFieldsForNumbers() {
 

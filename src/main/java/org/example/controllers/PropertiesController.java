@@ -84,13 +84,28 @@ public class PropertiesController implements Initializable,Controller {
         String functionType =(String)functionTypeChoiceBox.getValue();
         String probCross=probCrossTextField.getText();
         String probMutation=probMutationTextField.getText();
+        String popsize=populationSizeTextField.getText();
+        String[] properties={generationsNumber,selectionType,functionType,probCross,probMutation,popsize};
+        isStringsEmpty(properties);
+
         AgSettings agSettings=new AgSettings();
         agSettings.setFunctionType(functionType,1);
         agSettings.setProbCross(Double.parseDouble(probCross));
         agSettings.setGenerationsNumber(Integer.parseInt(generationsNumber));
         agSettings.setProbMutation(Double.parseDouble(probMutation));
         agSettings.setSelectionType(selectionType);
+        agSettings.setPopulationSize(Integer.parseInt(popsize));
         return agSettings;
+    }
+
+    private void isStringsEmpty(String[] properties) throws Exception {
+        for(String property:properties)
+        {
+            if(property.isEmpty())
+            {
+                throw new Exception("Wszystkie pola muszą być uzupełnione");
+            }
+        }
     }
 
     public PropertiesController() {
@@ -120,6 +135,7 @@ public class PropertiesController implements Initializable,Controller {
 
         probCrossTextField.textProperty().addListener(new DataValidation(probCrossTextField,5,false));
         probMutationTextField.textProperty().addListener(new DataValidation(probMutationTextField,5,false));
+        populationSizeTextField.textProperty().addListener(new DataValidation(probMutationTextField,3,true));
 
 
     }

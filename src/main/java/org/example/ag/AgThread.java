@@ -13,6 +13,13 @@ public class AgThread extends Thread {
     @Override
     public void run() {
         Logger.getGlobal().info("Ag starts");
-//        for(int i=0; i<agSettings.generationsNumber;i++)
+        int chromosomeSize=computeChromosomeSize();
+        AgSingleRun agSingleRun=new AgSingleRun(agSettings,1);
+        agSingleRun.start();
+
+    }
+
+    private int computeChromosomeSize() {
+        agSettings.
     }
 }
