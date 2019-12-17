@@ -18,7 +18,17 @@ public class NumericalUtils {
     }
     static boolean xor(boolean a,boolean b)
     {
-         return !a==b;
+         return !(a==b);
+
+    }
+    static char xor(char a,char b)
+    {
+        if(!(a==b))
+        {
+            return '1';
+        }
+        else
+            return '0';
 
     }
     public static BitSet convertIntToBitSet(int number, int bitSetSize)
@@ -70,6 +80,18 @@ public class NumericalUtils {
             binary.set(i,xor(grayCode.get(i),binary.get(i-1)));
         }
         return binary;
+    }
+
+    public static String greyCodeToBinary(String grayCode,int size)
+    {
+        StringBuilder binary=new StringBuilder("0".repeat(size));
+        binary.setCharAt(0,grayCode.charAt(0));
+        for(int i=1;i<size;i++)
+        {
+
+            binary.setCharAt(i,xor(grayCode.charAt(i),binary.charAt(i-1)));
+        }
+        return binary.toString();
     }
 
 }

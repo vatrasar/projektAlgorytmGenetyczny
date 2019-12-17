@@ -7,6 +7,7 @@ import org.example.ag.selection.SelcetionType;
 import org.example.ag.selection.TournamentHard;
 import org.example.ag.selection.TournamentSoft;
 
+import java.util.Random;
 import java.util.function.Function;
 
 @Getter
@@ -21,7 +22,23 @@ public class AgSettings {
      double probCross;
      @Setter int precision;
      int populationSize;
-     void isBigerThen(double number,int limit,String exceptionComunicat) throws Exception {
+     long seed;
+     int runsNumber;
+
+     public void setRunsNumber(int runsNumber) throws Exception {
+          isBigerThen(runsNumber,0,"Liczba uruchomień powinna być wieksza od 0");
+          this.runsNumber=runsNumber;
+     }
+
+     public void setSeed(Long seed) throws Exception {
+          if(seed<0)
+          {
+               throw new Exception("Ziarno powinno byc większe niż 0");
+          }
+          this.seed=seed;
+     }
+
+     void isBigerThen(double number, int limit, String exceptionComunicat) throws Exception {
           if(number<=limit)
           {
                throw new Exception(exceptionComunicat);
@@ -123,4 +140,6 @@ public class AgSettings {
           }
           return new Proportional();
      }
+
+
 }

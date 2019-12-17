@@ -2,8 +2,6 @@ package org.example.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
@@ -17,6 +15,7 @@ import org.example.utils.DataValidation;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -63,7 +62,10 @@ public class PropertiesController1 implements Controller, Initializable {
             agSettings.setPrecision(Integer.parseInt(precisionText));
             agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
             agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
+            agSettings.setSeed(getRandomSeed());
+            agSettings.setRunsNumber(1);
             Logger.getGlobal().info("Wprowadzono dane");
+
             AgThread watek=new AgThread(agSettings);
             watek.start();
 
@@ -80,6 +82,12 @@ public class PropertiesController1 implements Controller, Initializable {
     {
         mainPane.getChildren().clear();
         mainPane.getChildren().add(perviousPage);
+    }
+    public long getRandomSeed()
+    {
+        Random random=new Random();
+        long seed=random.nextLong();
+        return seed;
     }
 
     public void chooseSeedDirectory()

@@ -3,6 +3,8 @@ package org.example.utils;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
 
@@ -42,4 +44,18 @@ public class NumericalUtilsTest {
 
     }
 
+    @Test
+    public void greyCodeToBinary() {
+        List<BitSet>binary=new ArrayList<>();
+        IntStream.range(0,8).forEach(i->{
+            binary.add(NumericalUtils.convertIntToBitSet(i,3));
+        });
+
+        List<BitSet>bitGrey=binary.stream().map(a->NumericalUtils.convertToGreyCode(a,3)).collect(Collectors.toList());
+        List<String>greyStrings=bitGrey.stream().map(a->NumericalUtils.bitSetToString(a,3)).collect(Collectors.toList());
+        List<String>bin2Strings=greyStrings.stream().map(a->NumericalUtils.greyCodeToBinary(a,3)).collect(Collectors.toList());
+
+        System.out.println(bin2Strings);
+        assertEquals(bin2Strings.get(2),"010");
+    }
 }
