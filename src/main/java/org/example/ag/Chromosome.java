@@ -1,5 +1,6 @@
 package org.example.ag;
 
+import lombok.Getter;
 import org.example.utils.NumericalUtils;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class Chromosome {
     BitSet genotype;
-    double score;//score in current generation
+    @Getter double score;//score in current generation
     int chromosomeSize;
     int overFlowSize;
     public Chromosome(int size,int overFlowSize,final Random rand) {

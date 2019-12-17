@@ -1,10 +1,14 @@
 package org.example.ag;
 
+import lombok.Getter;
+import org.example.ag.selection.SelcetionType;
+
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 import java.util.Random;
-
+import java.util.stream.Collectors;
+@Getter
 public class Population {
     List<Chromosome> population;
 
@@ -24,6 +28,10 @@ public class Population {
         this.population = population;
 
     }
+    public Population() {
+        this.population = new ArrayList<>();
+
+    }
 
     public void evaluation(FunctionType functionType, int funDimensional,int prec) {
         for(Chromosome chromosome:population)
@@ -31,4 +39,6 @@ public class Population {
             chromosome.evalute(functionType,funDimensional,prec);
         }
     }
+
+
 }
