@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -125,5 +126,29 @@ public class Population {
             parents.add(new Chromosome(population.get(0),true,random));
         }
         return new Pair<Chromosome,Chromosome>(parents.get(0),parents.get(1));
+    }
+
+    public void mutation(double probMutation, Random random) {
+        population.forEach(chromosome -> {
+            if(random.nextDouble()<probMutation)
+            {
+                int muteIndex=random.nextInt(chromosome.chromosomeSize);
+                chromosome.genotype.set(muteIndex,!chromosome.genotype.get(muteIndex));
+
+
+            }
+        });
+    }
+
+    public Chromosome getBestChromosome() {
+        Chromosome best=population.get(0);
+        for(Chromosome chromosome:population)
+        {
+            if(chromosome.score>best.score)
+            {
+                best=chromosome;
+            }
+        }
+        return best;
     }
 }

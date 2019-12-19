@@ -47,7 +47,7 @@ public class Chromosome {
         score=functionType.compute(args);
     }
 
-    private List<Double> convertBitSetToArgs(int funDimensional, FunctionType functionType,int prec) {
+    public List<Double> convertBitSetToArgs(int funDimensional, FunctionType functionType,int prec) {
         List<Integer>argsAsSolutionsNumbers=convertBitSetToIntegerElements(funDimensional);//there can be "overflow" numbers
         List<Integer>argsAsSolutionsNoOverFlow=mapNumbersToNoOverflow(argsAsSolutionsNumbers);
 

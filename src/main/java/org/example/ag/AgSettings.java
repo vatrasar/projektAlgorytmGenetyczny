@@ -31,10 +31,7 @@ public class AgSettings {
      }
 
      public void setSeed(Long seed) throws Exception {
-          if(seed<0)
-          {
-               throw new Exception("Ziarno powinno byc większe niż 0");
-          }
+
           this.seed=seed;
      }
 

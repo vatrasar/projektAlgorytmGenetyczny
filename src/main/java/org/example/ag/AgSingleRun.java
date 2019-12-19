@@ -3,6 +3,7 @@ package org.example.ag;
 import lombok.RequiredArgsConstructor;
 
 import java.util.BitSet;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
@@ -22,9 +23,14 @@ public class AgSingleRun extends Thread {
         for (int i = 0; i < agSettings.generationsNumber; i++) {
             population.evaluation(agSettings.functionType, agSettings.getFunDimensional(), agSettings.precision);
             population = agSettings.selectionType.getPopulationAfterSelection(population, random);
-            population=population.crossOver();
-
+            population=population.crossOver(agSettings.probCross,random);
+            population.mutation(agSettings.probMutation,random);
+           Chromosome bestChromosome=population.getBestChromosome();
+           List<Double> bestArgs=bestChromosome.convertBitSetToArgs(agSettings.funDimensional,agSettings.functionType,agSettings.precision);
+            Double bestValue=agSettings.functionType.compute(bestArgs);
+            System.out.println("best in "+i+" generation "+bestValue);
         }
+        Logger.getGlobal().info("run "+runId+" end");
 
 
     }

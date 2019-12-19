@@ -26,6 +26,7 @@ public class AgThread extends Thread {
         List<Random>radnomList=getRandomList();
         radnomList.forEach((random)->{
             AgSingleRun agSingleRun=new AgSingleRun(agSettings,1,chromosomeSize,overflowSize,random);
+            agSingleRun.start();
         });
 
 
