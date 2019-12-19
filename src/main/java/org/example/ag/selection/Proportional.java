@@ -13,29 +13,41 @@ public class Proportional implements SelcetionType {
     @Override
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
         int size=inPoupulation.getPopulation().size();
-        double scoreSum=0;
-        for(Chromosome chromosome:inPoupulation.getPopulation())
-        {
-            scoreSum+=chromosome.getScore();
-        }
-        final double scoreSumFinal=scoreSum;
-        List<Double> chromosomesSurviveProbability=inPoupulation.getPopulation().stream().map(a->a.getScore()/scoreSumFinal).collect(Collectors.toList());
+        final double scoreSum=inPoupulation.getSumOfChromosomesScores();
+
+
+        List<Double> chromosomesSurviveProbability=inPoupulation.getPopulation().stream().map(a->a.getScore()/scoreSum).collect(Collectors.toList());
+
+        //if random number is in range chromosome survives
+        List<Double>chromosomesRanges=getChromosomesRanges(chromosomesSurviveProbability);
+
         List<Chromosome>parentPopulation=new ArrayList<>();
+
         for(Chromosome chromosome:inPoupulation.getPopulation())
         {
-            double sum=0;
+
             double randNumber=random.nextDouble();
-            for (int i=0;i<chromosomesSurviveProbability.size();i++)
+            for(Double rangeRightBound:chromosomesRanges)
             {
-                sum+=chromosomesSurviveProbability.get(i);
-                if(sum>=randNumber)
+                if(rangeRightBound>=randNumber)
                 {
-                    parentPopulation.add(inPoupulation.getPopulation().get(i));
+                    parentPopulation.add(inPoupulation.getPopulation().get(chromosomesRanges.indexOf(rangeRightBound)));
                     break;
                 }
-
             }
+
         }
         return new Population(parentPopulation);
+    }
+
+    private List<Double> getChromosomesRanges(List<Double>chromosomesSurviveProbability) {
+        double sum=0;
+        List<Double>rangesRightBounds=new ArrayList<>();
+        for (Double aDouble : chromosomesSurviveProbability) {
+            sum += aDouble;
+            rangesRightBounds.add(sum);
+        }
+        return rangesRightBounds;
+
     }
 }

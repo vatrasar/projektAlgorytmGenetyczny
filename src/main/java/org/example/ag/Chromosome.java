@@ -22,7 +22,17 @@ public class Chromosome {
         this.overFlowSize=overFlowSize;
     }
 
-    private BitSet getRandomBitSet(final Random random,int size) {
+    public Chromosome(Chromosome other,boolean isRandom,Random random) {
+        if(isRandom)
+            genotype=getRandomBitSet(random,other.chromosomeSize);
+        else
+            this.genotype = other.genotype;
+        this.score = other.score;
+        this.chromosomeSize = other.chromosomeSize;
+        this.overFlowSize = other.overFlowSize;
+    }
+
+    private BitSet getRandomBitSet(final Random random, int size) {
         BitSet bitSet=new BitSet(chromosomeSize);
         IntStream.range(0,size).forEach(i->{
             boolean value=random.nextBoolean();
