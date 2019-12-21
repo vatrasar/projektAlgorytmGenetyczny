@@ -28,7 +28,11 @@ public class AgSingleRun extends Thread {
            Chromosome bestChromosome=population.getBestChromosome();
            List<Double> bestArgs=bestChromosome.convertBitSetToArgs(agSettings.funDimensional,agSettings.functionType,agSettings.precision);
             Double bestValue=agSettings.functionType.compute(bestArgs);
-            System.out.println("best in "+i+" generation "+bestValue);
+            System.out.println("best in "+i+" generation "+bestValue+" for");
+            for(Double arg:bestArgs)
+            {
+                System.out.println("arg "+arg);
+            }
         }
         Logger.getGlobal().info("run "+runId+" end");
 

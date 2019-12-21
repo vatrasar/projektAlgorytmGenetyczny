@@ -131,7 +131,7 @@ public class PropertiesController implements Initializable,Controller {
 
         probCrossTextField.textProperty().addListener(new DataValidation(probCrossTextField,5,false));
         probMutationTextField.textProperty().addListener(new DataValidation(probMutationTextField,5,false));
-        populationSizeTextField.textProperty().addListener(new DataValidation(probMutationTextField,3,true));
+        populationSizeTextField.textProperty().addListener(new DataValidation(populationSizeTextField,3,true));
 
 
     }
