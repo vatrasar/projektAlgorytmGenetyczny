@@ -24,9 +24,9 @@
             <Font size="20.0" />
           </font>
         </Label>
-        <Button cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Ustawinia" textOverrun="CLIP" VBox.vgrow="ALWAYS" />
-        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wyniki" VBox.vgrow="ALWAYS" />
-        <Button minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wykresy" VBox.vgrow="ALWAYS" />
+        <Button fx:id="settingsButton" cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#propertiesMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Ustawinia" textOverrun="CLIP" VBox.vgrow="ALWAYS" />
+        <Button fx:id="resultsButton" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#resultsMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wyniki" VBox.vgrow="ALWAYS" />
+        <Button fx:id="curvesButton" minHeight="16.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wykresy" VBox.vgrow="ALWAYS" />
       </children>
     </VBox>
     <StackPane id="" fx:id="mainPane" prefHeight="529.0" prefWidth="651.9998779296875" HBox.hgrow="ALWAYS" />

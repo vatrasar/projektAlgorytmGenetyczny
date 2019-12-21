@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController1">
+<VBox depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController1">
   <children>
   <HBox minHeight="18.0" prefHeight="114.0" prefWidth="652.0">
     <children>

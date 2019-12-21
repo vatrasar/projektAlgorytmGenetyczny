@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import eu.hansolo.tilesfx.Tile?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="progresBackGround" prefHeight="529.0" prefWidth="652.0" styleClass="men" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProgressController">
+    <stylesheets>
+        <URL value="@../../../css/progressCSS.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="335.0" prefWidth="408.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Tile fx:id="progresBar" prefHeight="259.0" prefWidth="600.0" styleClass="tile" VBox.vgrow="ALWAYS" />
+         </children></VBox>
+   </children>
+</VBox>

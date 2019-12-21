@@ -1,7 +1,10 @@
 package org.example.ag;
 
+import eu.hansolo.tilesfx.Tile;
+import eu.hansolo.tilesfx.tools.Statistics;
 import lombok.RequiredArgsConstructor;
 import org.example.ag.AgSettings;
+import org.example.controllers.ProgressController;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -14,8 +17,8 @@ import java.util.stream.IntStream;
 public class AgThread extends Thread {
 
    final AgSettings agSettings;
-
-
+   final ProgressController progressBarController;
+    List<AgStatistic>agStatisticList;
     @Override
     public void run() {
         Logger.getGlobal().info("Ag starts");
@@ -24,13 +27,25 @@ public class AgThread extends Thread {
         final int chromosomeSize = getChromosomeSize(numberOfPossibleResults);
         int overflowSize=(int)(Math.pow(2,chromosomeSize)-numberOfPossibleResults);//how much more results can chromosome hold than we need in our case
         List<Random>radnomList=getRandomList();
-        radnomList.forEach((random)->{
-            AgSingleRun agSingleRun=new AgSingleRun(agSettings,1,chromosomeSize,overflowSize,random);
+        agStatisticList=getStatisticList();
+        IntStream.range(0,radnomList.size()).forEach(i->{
+            AgSingleRun agSingleRun=new AgSingleRun(agSettings,1,chromosomeSize,overflowSize,radnomList.get(i),agStatisticList.get(i),this);
+
             agSingleRun.start();
         });
 
 
 
+
+
+    }
+
+    private List<AgStatistic> getStatisticList() {
+        List<AgStatistic>statisticList=new ArrayList<>();
+        IntStream.range(0,agSettings.runsNumber).forEach(a->{
+                statisticList.add(new AgStatistic());
+        });
+        return statisticList;
     }
 
     private List<Random> getRandomList() {
@@ -61,4 +76,16 @@ public class AgThread extends Thread {
 
     }
 
+
+    public synchronized void updateProgressBar() {
+        int sumOfGenerations=agSettings.runsNumber*agSettings.generationsNumber;
+        int finishedGenerations=0;
+        for(AgStatistic stat:agStatisticList)
+        {
+            finishedGenerations+=stat.generationNumber;
+        }
+        double procentOfFinished=((double) finishedGenerations)/sumOfGenerations;
+        progressBarController.updateProgresBar(procentOfFinished);
+
+    }
 }

@@ -7,8 +7,6 @@ import org.example.ag.selection.SelcetionType;
 import org.example.ag.selection.TournamentHard;
 import org.example.ag.selection.TournamentSoft;
 
-import java.util.Random;
-import java.util.function.Function;
 
 @Getter
 public class AgSettings {

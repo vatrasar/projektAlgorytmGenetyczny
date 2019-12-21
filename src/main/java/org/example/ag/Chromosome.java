@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 public class Chromosome {
     BitSet genotype;
     @Getter double score;//score in current generation
-    int chromosomeSize;
+    @Getter int chromosomeSize;
     int overFlowSize;
     public Chromosome(int size,int overFlowSize,final Random rand) {
         chromosomeSize=size;

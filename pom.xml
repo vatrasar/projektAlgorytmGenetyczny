@@ -50,6 +50,16 @@
             <artifactId>arquillian-junit-core</artifactId>
             <version>1.4.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>tilesfx</artifactId>
+            <version>11.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>13-ea+14b</version>
+        </dependency>
 
 
     </dependencies>

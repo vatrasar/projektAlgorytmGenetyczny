@@ -1,6 +1,8 @@
 package org.example.ag;
 
+import eu.hansolo.tilesfx.Tile;
 import lombok.RequiredArgsConstructor;
+import org.example.controllers.ProgressController;
 
 import java.util.BitSet;
 import java.util.List;
@@ -15,6 +17,8 @@ public class AgSingleRun extends Thread {
     final int chromosomeSize;
     final int overFlowSize;
     final Random random;
+    final AgStatistic agStatistic;
+    final AgThread parentThread;
 
     @Override
     public void run() {
@@ -22,8 +26,12 @@ public class AgSingleRun extends Thread {
         Population population = new Population(agSettings.getPopulationSize(), chromosomeSize, overFlowSize, random);
         for (int i = 0; i < agSettings.generationsNumber; i++) {
             population.evaluation(agSettings.functionType, agSettings.getFunDimensional(), agSettings.precision);
+
             population = agSettings.selectionType.getPopulationAfterSelection(population, random);
+
+
             population=population.crossOver(agSettings.probCross,random);
+
             population.mutation(agSettings.probMutation,random);
            Chromosome bestChromosome=population.getBestChromosome();
            List<Double> bestArgs=bestChromosome.convertBitSetToArgs(agSettings.funDimensional,agSettings.functionType,agSettings.precision);
@@ -33,9 +41,12 @@ public class AgSingleRun extends Thread {
             {
                 System.out.println("arg "+arg);
             }
+            agStatistic.uptdateStatistic(bestValue);
+            parentThread.updateProgressBar();
         }
         Logger.getGlobal().info("run "+runId+" end");
 
 
     }
+
 }

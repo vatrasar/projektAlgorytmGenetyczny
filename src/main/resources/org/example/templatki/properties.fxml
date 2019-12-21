@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="propertiesPane" depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="wrappedPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController">
+<VBox fx:id="propertiesPane" depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController">
   <children>
   <HBox minHeight="18.0" prefHeight="114.0" prefWidth="652.0">
     <VBox.margin>
@@ -23,7 +23,7 @@
       <children>
         <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="449.0">
           <children>
-            <Label id="title" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="42.0" prefWidth="176.0" text="Ustawienia" textFill="#0052cc" wrapText="false">
+            <Label id="title" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="42.0" prefWidth="176.0" text="Ustawienia" textFill="#131314" wrapText="false">
               <font>
                 <Font name="BerenisADFPro-Bold" size="30.0" />
               </font>

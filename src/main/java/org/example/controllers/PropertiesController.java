@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -14,6 +15,7 @@ import org.example.utils.DataValidation;
 import java.io.IOException;
 import java.net.URL;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -39,13 +41,21 @@ public class PropertiesController implements Initializable,Controller {
     VBox propertiesPane;
 
     VBox nextPage=null;
+    PropertiesController1 nextPageController;
+
     StackPane mainPane=null;
+    VBox progressPane;
+    private List<Button> menuButtonsList;
+    private ProgressController progressController;
 
 
     public void setMainPane( StackPane mainPane) {
         this.mainPane = mainPane;
     }
-
+    public void setProgressPane(VBox progressPane)
+    {
+        this.progressPane=progressPane;
+    }
 
     @FXML
     public void nextPropertiesPage()
@@ -56,12 +66,17 @@ public class PropertiesController implements Initializable,Controller {
                 FXMLLoader fxmlLoader = getLoader("properties1");
                 var a = fxmlLoader.load();
                 nextPage = new VBox((Parent) a);
-                PropertiesController1 propertiesController = fxmlLoader.getController();
-                propertiesController.setMainPane(mainPane);
-                propertiesController.setAgSettings(agSettings);
+                nextPageController = fxmlLoader.getController();
+                nextPageController.setMainPane(mainPane);
+                nextPageController.setAgSettings(agSettings);
+                nextPageController.setMenuButonsList(menuButtonsList);
+                nextPageController.setPerviousPage(propertiesPane);
+                nextPageController.setProgressController(progressController);
 
-                propertiesController.setPerviousPage(propertiesPane);
             }
+            else
+                nextPageController.setAgSettings(agSettings);
+            nextPageController.setProgressPane(progressPane);
             mainPane.getChildren().clear();
             mainPane.getChildren().add(nextPage);
         } catch (IOException ex) {
@@ -146,5 +161,15 @@ public class PropertiesController implements Initializable,Controller {
         generationsNumberTextField.setText("100");
 
         populationSizeTextField.setText("2");
+    }
+
+
+    public void setMenuButtons(List<Button> buttonList) {
+        this.menuButtonsList=buttonList;
+    }
+
+    public void setProgressController(ProgressController progressController) {
+
+        this.progressController=progressController;
     }
 }

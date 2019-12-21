@@ -14,7 +14,7 @@ public class Proportional implements SelcetionType {
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
         int size=inPoupulation.getPopulation().size();
         final double scoreSum=inPoupulation.getSumOfChromosomesScores();
-
+       
 
         List<Double> chromosomesSurviveProbability=inPoupulation.getPopulation().stream().map(a->a.getScore()/scoreSum).collect(Collectors.toList());
 
@@ -22,7 +22,21 @@ public class Proportional implements SelcetionType {
         List<Double>chromosomesRanges=getChromosomesRanges(chromosomesSurviveProbability);
 
         List<Chromosome>parentPopulation=new ArrayList<>();
+        if(scoreSum==0)
+        {
+            for(Chromosome chromosome:inPoupulation.getPopulation()) {
 
+
+                for (Double rangeRightBound : chromosomesRanges) {
+
+                    parentPopulation.add(new Chromosome(chromosome, true, random));
+
+
+                }
+            }
+            return new Population(parentPopulation);
+        }
+        int i=0;
         for(Chromosome chromosome:inPoupulation.getPopulation())
         {
 
@@ -34,8 +48,11 @@ public class Proportional implements SelcetionType {
                     parentPopulation.add(inPoupulation.getPopulation().get(chromosomesRanges.indexOf(rangeRightBound)));
                     break;
                 }
-            }
 
+            }
+            if(i>=parentPopulation.size())
+                System.out.println(randNumber);
+            i++;
         }
         return new Population(parentPopulation);
     }
