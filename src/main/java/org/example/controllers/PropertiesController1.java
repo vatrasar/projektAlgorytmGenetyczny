@@ -74,17 +74,14 @@ public class PropertiesController1 implements Controller, Initializable {
             agSettings.setSeed(getRandomSeed());
             agSettings.setRunsNumber(1);
             Logger.getGlobal().info("Wprowadzono dane");
-
-            AgThread watek=new AgThread(agSettings,progressController);
-
-
-            watek.start();
+            AgThread agThread=new AgThread(agSettings);
+            progressController.progress.progressProperty().bind(agThread.progressProperty());
 
 
             mainPane.getChildren().clear();
             mainPane.getChildren().add(progressPane);
             menuButtonsList.forEach(button->button.setDisable(true));
-
+            new Thread(agThread).start();
 
 
         } catch (Exception e) {
@@ -115,7 +112,9 @@ public class PropertiesController1 implements Controller, Initializable {
     {
         Random random=new Random();
         long seed=random.nextLong();
-        return seed;
+        Logger.getGlobal().info("ziarno:"+seed);
+
+        return 7421733397247411475L;
     }
 
     public void chooseSeedDirectory()

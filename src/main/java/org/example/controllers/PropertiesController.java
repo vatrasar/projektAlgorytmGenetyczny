@@ -158,9 +158,9 @@ public class PropertiesController implements Initializable,Controller {
         probCrossTextField.setText("70");
         probMutationTextField.setText("0.1");
 
-        generationsNumberTextField.setText("100");
+        generationsNumberTextField.setText("300");
 
-        populationSizeTextField.setText("2");
+        populationSizeTextField.setText("160");
     }
 
 

@@ -2,6 +2,7 @@ package org.example.ag;
 
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.tools.Statistics;
+import javafx.concurrent.Task;
 import lombok.RequiredArgsConstructor;
 import org.example.ag.AgSettings;
 import org.example.controllers.ProgressController;
@@ -14,13 +15,14 @@ import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
-public class AgThread extends Thread {
+public class AgThread extends Task<Double> {
 
    final AgSettings agSettings;
-   final ProgressController progressBarController;
+
     List<AgStatistic>agStatisticList;
+
     @Override
-    public void run() {
+    public Double call() {
         Logger.getGlobal().info("Ag starts");
         int numberOfPossibleResults=getNumberOfPossibleResults();
 
@@ -33,9 +35,26 @@ public class AgThread extends Thread {
 
             agSingleRun.start();
         });
+        int sumOfGenerations= getTargetSumOfGenerations();
 
+        int finishedGenerations = getFinishedGenerations();
+        while (sumOfGenerations!=finishedGenerations)
+        {
+            updateProgress(((double) finishedGenerations)/sumOfGenerations,1);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            sumOfGenerations= getTargetSumOfGenerations();
 
+            finishedGenerations = getFinishedGenerations();
 
+            updateProgress(((double)finishedGenerations)/sumOfGenerations,1.0);
+        }
+
+        
+        return 2.2;
 
 
     }
@@ -51,6 +70,7 @@ public class AgThread extends Thread {
     private List<Random> getRandomList() {
         List<Random>randomList=new ArrayList<>();
         Random randomMother = new Random(agSettings.seed);
+
         IntStream.range(0,agSettings.runsNumber).forEach(i->{
             randomList.add(new Random(randomMother.nextInt()));
         });
@@ -77,15 +97,20 @@ public class AgThread extends Thread {
     }
 
 
-    public synchronized void updateProgressBar() {
-        int sumOfGenerations=agSettings.runsNumber*agSettings.generationsNumber;
+    public  void updateProgressBar() {
+
+    }
+
+    private int getFinishedGenerations() {
         int finishedGenerations=0;
         for(AgStatistic stat:agStatisticList)
         {
             finishedGenerations+=stat.generationNumber;
         }
-        double procentOfFinished=((double) finishedGenerations)/sumOfGenerations;
-        progressBarController.updateProgresBar(procentOfFinished);
+        return finishedGenerations;
+    }
 
+    private int getTargetSumOfGenerations() {
+        return agSettings.runsNumber*agSettings.generationsNumber;
     }
 }

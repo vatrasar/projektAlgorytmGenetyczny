@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import eu.hansolo.tilesfx.Tile?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox id="progresBackGround" prefHeight="529.0" prefWidth="652.0" styleClass="men" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ProgressController">
     <stylesheets>
         <URL value="@../../../css/progressCSS.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="335.0" prefWidth="408.0" VBox.vgrow="ALWAYS">
+      <VBox alignment="CENTER" prefHeight="597.0" prefWidth="652.0" VBox.vgrow="ALWAYS">
          <children>
-            <Tile fx:id="progresBar" prefHeight="259.0" prefWidth="600.0" styleClass="tile" VBox.vgrow="ALWAYS" />
+            <Label text="Obliczanie..." textFill="#08aaeb">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <ProgressBar fx:id="progress" prefHeight="43.0" prefWidth="332.0" progress="0.0" />
          </children></VBox>
    </children>
+    <stylesheets>
+        <URL value="@../../../css/progressCSS.css" />
+    </stylesheets>
 </VBox>
