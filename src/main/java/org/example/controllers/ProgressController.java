@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import eu.hansolo.tilesfx.Tile;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressBar;
@@ -17,6 +17,8 @@ public class ProgressController implements Initializable {
 
     @FXML
     ProgressBar progress;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         progress.setProgress(0);
@@ -27,4 +29,6 @@ public class ProgressController implements Initializable {
 
 
     }
+
+
 }

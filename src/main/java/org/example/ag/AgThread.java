@@ -1,7 +1,6 @@
 package org.example.ag;
 
-import eu.hansolo.tilesfx.Tile;
-import eu.hansolo.tilesfx.tools.Statistics;
+
 import javafx.concurrent.Task;
 import lombok.RequiredArgsConstructor;
 import org.example.ag.AgSettings;

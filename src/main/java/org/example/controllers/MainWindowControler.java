@@ -23,7 +23,7 @@ public class MainWindowControler implements Initializable, Controller {
 
     @FXML
     StackPane mainPane;
-    VBox propertiesPane,progressPane;
+    VBox propertiesPane,progressPane,resultsPane;
     boolean isAfterTest;
 
     @FXML
@@ -34,6 +34,7 @@ public class MainWindowControler implements Initializable, Controller {
 
     @FXML
     Button curvesButton;
+    ResultsController resultsController;
 
 
 
@@ -42,14 +43,19 @@ public class MainWindowControler implements Initializable, Controller {
         try {
             FXMLLoader fxmlLoaderProperties=getLoader("properties");
             FXMLLoader fxmlLoaderResults=getLoader("progress");
+            FXMLLoader fxmlLoaderCharts=getLoader("results");
             progressPane=new VBox((Parent)fxmlLoaderResults.load());
+
             propertiesPane=new VBox((Parent)fxmlLoaderProperties.load());
+            resultsPane=new VBox((Parent)fxmlLoaderCharts.load());
+            resultsController=fxmlLoaderCharts.getController();
             PropertiesController propertiesController=fxmlLoaderProperties.getController();
             ProgressController progressController=fxmlLoaderResults.getController();
             propertiesController.setMainPane(mainPane);
             propertiesController.setProgressPane(progressPane);
             propertiesController.setProgressController(progressController);
             propertiesController.setMenuButtons(Arrays.asList(settingsButton,resultsButton,curvesButton));
+            propertiesController.setMainWindowController(this);
             isAfterTest=false;
 
             mainPane.getChildren().add(propertiesPane);
@@ -59,14 +65,15 @@ public class MainWindowControler implements Initializable, Controller {
     }
     public void resultsMenu()
     {
-        if(isAfterTest)
-            Logger.getGlobal().info("Brak widoku wynikowego");
-        else
-        {
-            mainPane.getChildren().clear();
-            mainPane.getChildren().add(progressPane);
-        }
-
+//        if(isAfterTest)
+//            Logger.getGlobal().info("Brak widoku wynikowego");
+//        else
+//        {
+//            mainPane.getChildren().clear();
+//            mainPane.getChildren().add(progressPane);
+//        }
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(resultsPane);
 
     }
 

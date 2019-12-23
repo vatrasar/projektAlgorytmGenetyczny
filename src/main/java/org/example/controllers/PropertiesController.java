@@ -47,6 +47,7 @@ public class PropertiesController implements Initializable,Controller {
     VBox progressPane;
     private List<Button> menuButtonsList;
     private ProgressController progressController;
+    private MainWindowControler mainWindowController;
 
 
     public void setMainPane( StackPane mainPane) {
@@ -72,6 +73,7 @@ public class PropertiesController implements Initializable,Controller {
                 nextPageController.setMenuButonsList(menuButtonsList);
                 nextPageController.setPerviousPage(propertiesPane);
                 nextPageController.setProgressController(progressController);
+                nextPageController.setMainWindowController(mainWindowController);
 
             }
             else
@@ -171,5 +173,9 @@ public class PropertiesController implements Initializable,Controller {
     public void setProgressController(ProgressController progressController) {
 
         this.progressController=progressController;
+    }
+
+    public void setMainWindowController(MainWindowControler mainWindowControler) {
+        this.mainWindowController=mainWindowControler;
     }
 }
