@@ -11,17 +11,18 @@ import java.util.BitSet;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RequiredArgsConstructor
-public class AgThread extends Task<Double> {
+public class AgThread extends Task<List<List<Double>>> {
 
    final AgSettings agSettings;
 
     List<AgStatistic>agStatisticList;
 
     @Override
-    public Double call() {
+    public List<List<Double>> call() {
         Logger.getGlobal().info("Ag starts");
         int numberOfPossibleResults=getNumberOfPossibleResults();
 
@@ -53,7 +54,7 @@ public class AgThread extends Task<Double> {
         }
 
         
-        return 2.2;
+        return agStatisticList.stream().map(stat->stat.bestScoreList).collect(Collectors.toList());
 
 
     }

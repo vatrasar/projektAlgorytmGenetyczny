@@ -93,8 +93,12 @@ public class PropertiesController1 implements Controller, Initializable {
         progressController.progress.progressProperty().bind(agThread.progressProperty());
         agThread.setOnSucceeded(workerStateEvent ->
         {
+            List<List<Double>> statistics=(List<List<Double>>)workerStateEvent.getSource().getValue();
+            mainWindowController.getExportController().statistic=statistics;
             mainWindowController.resultsMenu();
-           mainWindowController.resultsController.loadDataToChart();
+           mainWindowController.resultsController.loadDataToChart(statistics);
+           menuButtonsList.forEach(button -> button.setDisable(false));
+           menuButtonsList.get(1).requestFocus();
         });
     }
 
@@ -103,7 +107,7 @@ public class PropertiesController1 implements Controller, Initializable {
         agSettings.setPrecision(Integer.parseInt(precisionText));
         agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
         agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
-        agSettings.setSeed(getRandomSeed());
+        agSettings.setSeed(getRandomSeed(),mainWindowController);
         agSettings.setRunsNumber(1);
     }
 

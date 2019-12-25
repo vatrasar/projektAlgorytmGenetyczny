@@ -23,7 +23,7 @@
 }
 
 .buttonMenu:hover {
-    -fx-background-color: #E5E5E5;
+    -fx-background-color: #b6f2ee;
     -fx-text-fill: #000;
 }
 
@@ -34,6 +34,10 @@
 
 .buttonMenu:focused {
     -fx-background-color: #D9D9D9;
+    -fx-text-fill: #364FCD;
+}
+.buttonMenu:focused:hover {
+    -fx-background-color: #b6f2ee;
     -fx-text-fill: #364FCD;
 }
 

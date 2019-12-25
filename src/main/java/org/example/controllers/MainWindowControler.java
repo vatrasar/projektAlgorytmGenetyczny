@@ -10,12 +10,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.controllers.Controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -23,7 +26,7 @@ public class MainWindowControler implements Initializable, Controller {
 
     @FXML
     StackPane mainPane;
-    VBox propertiesPane,progressPane,resultsPane;
+    VBox propertiesPane,progressPane,resultsPane,exportPane;
     boolean isAfterTest;
 
     @FXML
@@ -36,16 +39,23 @@ public class MainWindowControler implements Initializable, Controller {
     Button curvesButton;
     ResultsController resultsController;
 
+    @Setter long seed;
+    @Setter @Getter
+    ExportController exportController;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            seed=new Random().nextLong();
             FXMLLoader fxmlLoaderProperties=getLoader("properties");
             FXMLLoader fxmlLoaderResults=getLoader("progress");
             FXMLLoader fxmlLoaderCharts=getLoader("results");
+            FXMLLoader fxmlLoaderExport=getLoader("export");
+            exportPane=new VBox((Parent)fxmlLoaderExport.load());
             progressPane=new VBox((Parent)fxmlLoaderResults.load());
-
+            exportController=fxmlLoaderExport.getController();
+            exportController.setMainWindowControler(this);
             propertiesPane=new VBox((Parent)fxmlLoaderProperties.load());
             resultsPane=new VBox((Parent)fxmlLoaderCharts.load());
             resultsController=fxmlLoaderCharts.getController();
@@ -76,7 +86,13 @@ public class MainWindowControler implements Initializable, Controller {
         mainPane.getChildren().add(resultsPane);
 
     }
+    public void eksportMenu()
+    {
 
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(exportPane);
+
+    }
     public void propertiesMenu()
     {
         mainPane.getChildren().clear();

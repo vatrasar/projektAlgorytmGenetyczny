@@ -6,6 +6,7 @@ import org.example.ag.selection.Proportional;
 import org.example.ag.selection.SelcetionType;
 import org.example.ag.selection.TournamentHard;
 import org.example.ag.selection.TournamentSoft;
+import org.example.controllers.MainWindowControler;
 
 
 @Getter
@@ -18,18 +19,23 @@ public class AgSettings {
      double probTournamentWin;
      double probMutation;
      double probCross;
-     @Setter int precision;
+
+
+     int precision;
      int populationSize;
      long seed;
      int runsNumber;
+     public void setPrecision(int precision) {
+          this.precision = precision;
+     }
 
      public void setRunsNumber(int runsNumber) throws Exception {
           isBigerThen(runsNumber,0,"Liczba uruchomień powinna być wieksza od 0");
           this.runsNumber=runsNumber;
      }
 
-     public void setSeed(Long seed) throws Exception {
-
+     public void setSeed(Long seed, MainWindowControler mainWindowController) throws Exception {
+          mainWindowController.setSeed(seed);
           this.seed=seed;
      }
 
