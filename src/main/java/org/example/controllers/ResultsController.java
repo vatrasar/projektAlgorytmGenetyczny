@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import org.example.utils.WebListner;
 
 import java.io.*;
 import java.net.URL;
@@ -20,30 +21,29 @@ public class ResultsController implements Initializable {
     @FXML
     WebView chart;
 
+    WebListner listner;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        WebEngine engine =chart.getEngine();
+        listner= new WebListner(engine);
+        engine.getLoadWorker().stateProperty().addListener(listner);
     }
     public void loadDataToChart(List<List<Double>> statistics)
     {
 
+        ObjectMapper objectMapper=new ObjectMapper();
         WebEngine engine =chart.getEngine();
-       URL url2 = this.getClass().getResource("/chart/charts.html");
-        engine.getLoadWorker().stateProperty().addListener(
-                new ChangeListener<Worker.State>() {
-                    public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
-                        ObjectMapper objectMapper=new ObjectMapper();
+        try {
+            listner.setMessage(objectMapper.writeValueAsString(statistics));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        URL url2 = this.getClass().getResource("/chart/charts.html");
 
-                        if (newState == Worker.State.SUCCEEDED) {
-                            try {
-                                engine.executeScript("makeChart(\""+objectMapper.writeValueAsString(statistics)+"\")");
-                            } catch (JsonProcessingException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-       engine.setJavaScriptEnabled(true);
+
+
+        engine.setJavaScriptEnabled(true);
         engine.load(url2.toString());
 
 

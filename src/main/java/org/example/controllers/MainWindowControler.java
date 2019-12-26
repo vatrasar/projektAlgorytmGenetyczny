@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 import javafx.util.Pair;
 import lombok.Getter;
 import lombok.Setter;
@@ -82,6 +83,8 @@ public class MainWindowControler implements Initializable, Controller {
 //            mainPane.getChildren().clear();
 //            mainPane.getChildren().add(progressPane);
 //        }
+
+
         mainPane.getChildren().clear();
         mainPane.getChildren().add(resultsPane);
 

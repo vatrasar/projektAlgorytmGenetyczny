@@ -1,5 +1,8 @@
 var ctx = document.getElementById('chart').getContext('2d');
+
+var chart=null;
 function makeChart(content) {
+
     var json=JSON.parse(content);
 
     var data1={
@@ -16,7 +19,7 @@ function makeChart(content) {
 
 
 
-    var chart = new Chart(ctx, {
+    chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
         backgroundColor: ['rgb(2, 200, 29)'],
@@ -53,6 +56,13 @@ function makeChart(content) {
             }
         }
     });
+
+
+}
+function resetContent() {
+
+    $("#chart").html("");
+
 }
 
 
