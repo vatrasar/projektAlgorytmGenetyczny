@@ -9,7 +9,8 @@ module org.example {
     requires org.kordamp.ikonli.fontawesome;
     requires org.kordamp.ikonli.javafx;
     requires com.fasterxml.jackson.databind;
-
+    requires javaplot;
+    requires commons.math3;
     requires javafx.web;
 
 
