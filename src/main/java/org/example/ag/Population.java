@@ -82,7 +82,7 @@ public class Population {
     }
 
     private List<Chromosome> getFertileChromosomes(double probCrossOver, Random random) {
-        return population.stream().filter(a->random.nextDouble()<probCrossOver).collect(Collectors.toList());
+        return population.stream().filter(a->random.nextDouble()<probCrossOver/100).collect(Collectors.toList());
     }
 
     private Pair<Chromosome, Chromosome> crossParents(Pair<Chromosome, Chromosome> parents, Random random) {
@@ -130,13 +130,11 @@ public class Population {
 
     public void mutation(double probMutation, Random random) {
         population.forEach(chromosome -> {
-            if(random.nextDouble()<probMutation)
+            if(random.nextDouble()<probMutation/100)
             {
                 int muteIndex=random.nextInt(chromosome.chromosomeSize);
                 chromosome.genotype.set(muteIndex,!chromosome.genotype.get(muteIndex));
-
-
-            }
+           }
         });
     }
 
@@ -150,5 +148,16 @@ public class Population {
             }
         }
         return best;
+    }
+
+    public double getMeanScore() {
+        double sum=0;
+        for(Chromosome chrom:population)
+        {
+            sum+=chrom.score;
+
+        }
+        sum/=population.size();
+        return sum;
     }
 }

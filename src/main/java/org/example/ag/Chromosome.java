@@ -14,12 +14,14 @@ public class Chromosome {
     BitSet genotype;
     @Getter double score;//score in current generation
     @Getter int chromosomeSize;
+    List<Double>chrmosomeArgs;
     int overFlowSize;
     public Chromosome(int size,int overFlowSize,final Random rand) {
         chromosomeSize=size;
         this.genotype =getRandomBitSet(rand,size);
 
         this.overFlowSize=overFlowSize;
+
     }
 
     public Chromosome(Chromosome other,boolean isRandom,Random random) {
@@ -50,8 +52,8 @@ public class Chromosome {
     public List<Double> convertBitSetToArgs(int funDimensional, FunctionType functionType,int prec) {
         List<Integer>argsAsSolutionsNumbers=convertBitSetToIntegerElements(funDimensional);//there can be "overflow" numbers
         List<Integer>argsAsSolutionsNoOverFlow=mapNumbersToNoOverflow(argsAsSolutionsNumbers);
-
-        return convertToRealFunctionArgs(argsAsSolutionsNoOverFlow,functionType,prec);
+        chrmosomeArgs=convertToRealFunctionArgs(argsAsSolutionsNoOverFlow,functionType,prec);
+        return chrmosomeArgs;
     }
 
     private List<Double> convertToRealFunctionArgs(List<Integer> argsAsSolutionsNoOverFlow, FunctionType functionType,int prec) {
@@ -62,19 +64,20 @@ public class Chromosome {
 
     public List<Integer> mapNumbersToNoOverflow(List<Integer> argsAsSolutionsNumbers) {
         return argsAsSolutionsNumbers.stream().map(number->{
-            if(number<overFlowSize*2)
+            if(number<overFlowSize*2-1)
             {
+
                 if(number%2==0)
                 {
-                    return number;
+                    return number/2;
                 }
                 else
                 {
-                    return number-1;
+                   return number/2-1;
                 }
             }
             else
-                return number;
+                return number-overFlowSize;
         }).collect(Collectors.toList());
 
     }

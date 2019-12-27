@@ -3,6 +3,7 @@ package org.example.ag;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,4 +37,17 @@ public class ChromosomeTest {
         System.out.println(a);
     }
 
+    @Test
+    public void convertBitSetToArgs() {
+
+        Chromosome chromosome=new Chromosome(14,6144,new Random());
+        chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
+        while (chromosome.chrmosomeArgs.get(0)<5.14)
+        {
+            chromosome=new Chromosome(14,6144,new Random());
+            chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
+        }
+        Logger.getGlobal().info("Jest");
+        chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
+    }
 }

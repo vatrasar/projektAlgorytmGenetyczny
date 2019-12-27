@@ -6,12 +6,14 @@ import org.example.ag.Population;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Proportional implements SelcetionType {
     @Override
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
+        long start=System.currentTimeMillis();
         int size=inPoupulation.getPopulation().size();
         final double scoreSum=inPoupulation.getSumOfChromosomesScores();
        
@@ -30,30 +32,33 @@ public class Proportional implements SelcetionType {
                 for (Double rangeRightBound : chromosomesRanges) {
 
                     parentPopulation.add(new Chromosome(chromosome, true, random));
-
-
-                }
-            }
-            return new Population(parentPopulation);
-        }
-        int i=0;
-        for(Chromosome chromosome:inPoupulation.getPopulation())
-        {
-
-            double randNumber=random.nextDouble();
-            for(Double rangeRightBound:chromosomesRanges)
-            {
-                if(rangeRightBound>=randNumber)
-                {
-                    parentPopulation.add(inPoupulation.getPopulation().get(chromosomesRanges.indexOf(rangeRightBound)));
                     break;
                 }
 
             }
-            if(i>=parentPopulation.size())
-                System.out.println(randNumber);
-            i++;
+            return new Population(parentPopulation);
         }
+        else {
+            int i = 0;
+            long time = System.currentTimeMillis() - start;
+
+            for (Chromosome chromosome : inPoupulation.getPopulation()) {
+
+                double randNumber = random.nextDouble();
+                for (Double rangeRightBound : chromosomesRanges) {
+                    if (rangeRightBound >= randNumber) {
+                        parentPopulation.add(inPoupulation.getPopulation().get(chromosomesRanges.indexOf(rangeRightBound)));
+                        break;
+                    }
+
+                }
+                if (i >= parentPopulation.size())
+                    System.out.println(randNumber);
+                i++;
+            }
+        }
+
+        Logger.getGlobal().info("Czas selekcji"+(System.currentTimeMillis()-start));
         return new Population(parentPopulation);
     }
 

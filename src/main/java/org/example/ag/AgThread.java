@@ -24,10 +24,12 @@ public class AgThread extends Task<List<List<Double>>> {
     @Override
     public List<List<Double>> call() {
         Logger.getGlobal().info("Ag starts");
-        int numberOfPossibleResults=getNumberOfPossibleResults();
+        double numberOfPossibleResults=getNumberOfPossibleResults();
 
         final int chromosomeSize = getChromosomeSize(numberOfPossibleResults);
-        int overflowSize=(int)(Math.pow(2,chromosomeSize)-numberOfPossibleResults);//how much more results can chromosome hold than we need in our case
+
+
+        int overflowSize=(int)(Math.pow(2,chromosomeSize/agSettings.funDimensional)-numberOfPossibleResults);//how much more results can chromosome hold than we need in our case
         List<Random>radnomList=getRandomList();
         agStatisticList=getStatisticList();
         IntStream.range(0,radnomList.size()).forEach(i->{
@@ -79,19 +81,26 @@ public class AgThread extends Task<List<List<Double>>> {
 
     }
 
-    private int getNumberOfPossibleResults() {
-        return (int)(Math.ceil((agSettings.functionType.max-agSettings.functionType.min)*(Math.pow(10,agSettings.precision))))*agSettings.funDimensional;
+    /**
+     * dimensionals concerned here
+     * @return
+     */
+    private double getNumberOfPossibleResults() {
+        double range=agSettings.functionType.max-agSettings.functionType.min;
+        double prec =Math.pow(10,agSettings.precision);
+        return prec*range;
+
     }
 
-    private int getChromosomeSize(int numberOfPossibleResults) {
+    private int getChromosomeSize(double numberOfPossibleResults) {
 
         int chromosomeSize=1;
-        while(Math.pow(2,chromosomeSize)<numberOfPossibleResults)
+        while(Math.pow(2,chromosomeSize)<Math.ceil(numberOfPossibleResults))
         {
             chromosomeSize+=1;
         }
 
-        return chromosomeSize;
+        return chromosomeSize*agSettings.funDimensional;
 
 
     }
