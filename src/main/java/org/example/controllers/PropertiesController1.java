@@ -2,10 +2,7 @@ package org.example.controllers;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -15,17 +12,18 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.Setter;
 import org.example.ag.AgSettings;
+import org.example.ag.AgStatistic;
 import org.example.ag.AgThread;
 import org.example.utils.DataValidation;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
+import java.util.stream.IntStream;
 
 public class PropertiesController1 implements Controller, Initializable {
     @FXML
@@ -100,26 +98,52 @@ public class PropertiesController1 implements Controller, Initializable {
             List<List<Double>> statistics=(List<List<Double>>)workerStateEvent.getSource().getValue();
             mainWindowController.getExportController().statistic=statistics;
             mainWindowController.resultsMenu();
+            List<List<Double>>dataToPlot=new ArrayList<>();//0-runs mean 1 mean-std 2 mean+std
             if(statistics.size()>1)
             {
-                List<List<Double>>dataToPlot=new ArrayList<>();//0-runs mean 1 mean-std 2 mean+std
-                List<Double>runsMean=getRunsMean();
+
+                List<Double>runsMean=getRunsMean(statistics);
                 dataToPlot.add(runsMean);
 
-                dataToPlot.add(getStd(runsMean,true));
-                dataToPlot.add(getStd(runsMean,false));
+                dataToPlot.add(getStd(runsMean,statistics,true));
+                dataToPlot.add(getStd(runsMean, statistics, false));
 
 
             }
-           mainWindowController.resultsController.loadDataToChart(statistics);
+            else
+                dataToPlot=statistics;
+           mainWindowController.resultsController.loadDataToChart(dataToPlot);
            menuButtonsList.forEach(button -> button.setDisable(false));
            menuButtonsList.get(1).requestFocus();
         });
     }
 
-    private List<Double> getRunsMean() {
+    private List<Double> getStd(List<Double> runsMean, List<List<Double>> statistics, boolean isUnderLine) {
+        List<List<Double>>genValues= AgStatistic.getGenerationsValues(statistics);
+        List<Double>stdList=AgStatistic.getStdForGenerations(genValues);
+        List<Double>result = new ArrayList<>();
+        if(isUnderLine)
+        {
+            IntStream.range(0,stdList.size()).forEach(i->{
+                result.add(runsMean.get(i)-stdList.get(i));
+                    }
+            );
+        }
+        else {
+            IntStream.range(0,stdList.size()).forEach(i->{
+                        result.add(runsMean.get(i)+stdList.get(i));
+                    }
+            );
+        }
+        return result;
 
     }
+
+    private List<Double> getRunsMean(List<List<Double>> statistics) {
+        List<List<Double>>genValues= AgStatistic.getGenerationsValues(statistics);
+        return AgStatistic.getMeanForGenerations(genValues);
+    }
+
 
     private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties, String runsNumber) throws Exception {
         isStringsEmpty(properties);//sprawdzam czy nie ma jakis pustych pol

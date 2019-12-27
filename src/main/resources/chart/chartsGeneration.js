@@ -21,15 +21,15 @@ function makeChart(content) {
     if(json.length>1)
     {
         var standardDeviation1={
-            label: 'Odchylenie standarodwe',
-            fill:false,
-            borderColor: 'rgb(120,185,250)',
+            label: 'Górne odchylenie',
+            fill:0,
+            borderColor:'rgb(195,105,240)',
             data: json[1]
         };
         var standardDeviation2={
-
-            fill:false,
-            borderColor: 'rgb(120,185,250)',
+            label: 'Dolne odchylenie',
+            fill:0,
+            borderColor: 'rgb(194,105,240)',
             data: json[2]
         };
         datas.push(standardDeviation1);
@@ -50,6 +50,10 @@ function makeChart(content) {
 
         // Configuration options go here
         options: {
+            legend: {
+                display: true,
+
+            },
             aspectRatio:1.9,
             scales: {
                 xAxes:[
