@@ -25,7 +25,13 @@ public class AgSettings {
      int populationSize;
      long seed;
      int runsNumber;
-     public void setPrecision(int precision) {
+     public void setPrecision(int precision) throws Exception {
+          int max_prec=8;
+          if(precision>max_prec)
+          {
+               throw new Exception("Precyzja nie może być wieksza niż "+max_prec);
+          }
+
           this.precision = precision;
      }
 

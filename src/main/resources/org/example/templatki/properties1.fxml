@@ -66,7 +66,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="108.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="89.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Liczba wymiarów funkcji" underline="false" wrapText="true">
                       <VBox.margin>
@@ -80,7 +80,7 @@
                     </TextField>
                   </children>
                            <VBox.margin>
-                              <Insets top="20.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="108.0" prefWidth="256.0" styleClass="propertiesRowVbox">
@@ -92,15 +92,12 @@
                               </Label>
                               <CheckBox mnemonicParsing="false">
                                  <VBox.margin>
-                                    <Insets top="5.0" />
+                                    <Insets top="10.0" />
                                  </VBox.margin></CheckBox>
                            </children>
                            <VBox.margin>
-                              <Insets top="20.0" />
+                              <Insets />
                            </VBox.margin>
-                           <padding>
-                              <Insets top="7.0" />
-                           </padding>
                         </VBox>
               </children>
               <HBox.margin>
@@ -109,7 +106,36 @@
             </VBox>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                        <VBox layoutX="10.0" layoutY="50.0" prefHeight="107.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="108.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                           <children>
+                              <Label prefHeight="39.0" prefWidth="256.0" text="Wybierz ziarno funkcji losowej" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets fx:id="x1" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox prefWidth="200.0">
+                                 <children>
+                                    <TextField id="generationsNumber" fx:id="seedDirectoryTextField" editable="false" prefHeight="26.0" prefWidth="163.0" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#chooseSeedDirectory" text="Wybierz">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="50.0" prefHeight="89.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                            <children>
                               <Label prefHeight="39.0" prefWidth="256.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" wrapText="true">
                                  <VBox.margin>
@@ -126,34 +152,19 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="108.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                        <VBox prefHeight="108.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                            <children>
-                              <Label prefHeight="39.0" prefWidth="256.0" text="Wybierz ziarno funkcji losowej" wrapText="true">
+                              <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Liczba wymiarów funkcji" underline="false" wrapText="true">
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
                               </Label>
-                              <HBox prefWidth="200.0">
-                                 <children>
-                                    <TextField id="generationsNumber" fx:id="seedDirectoryTextField" editable="false" prefHeight="26.0" prefWidth="163.0" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </TextField>
-                                    <Button mnemonicParsing="false" onAction="#chooseSeedDirectory" text="Wybierz">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
+                              <TextField id="probTournamentWin" fx:id="runsNumberTextField1" prefHeight="22.0" prefWidth="200.0">
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets top="10.0" fx:id="x12" />
                                  </VBox.margin>
-                              </HBox>
+                              </TextField>
                            </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
                         </VBox>
               </children>
             </VBox>
