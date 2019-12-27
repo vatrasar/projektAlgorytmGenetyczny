@@ -3,11 +3,9 @@ package org.example.ag;
 
 import javafx.concurrent.Task;
 import lombok.RequiredArgsConstructor;
-import org.example.ag.AgSettings;
-import org.example.controllers.ProgressController;
 
 import java.util.ArrayList;
-import java.util.BitSet;
+
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -33,7 +31,7 @@ public class AgThread extends Task<List<List<Double>>> {
         List<Random>radnomList=getRandomList();
         agStatisticList=getStatisticList();
         IntStream.range(0,radnomList.size()).forEach(i->{
-            AgSingleRun agSingleRun=new AgSingleRun(agSettings,1,chromosomeSize,overflowSize,radnomList.get(i),agStatisticList.get(i),this);
+            AgSingleRun agSingleRun=new AgSingleRun(agSettings,i+1,chromosomeSize,overflowSize,radnomList.get(i),agStatisticList.get(i),this);
 
             agSingleRun.start();
         });

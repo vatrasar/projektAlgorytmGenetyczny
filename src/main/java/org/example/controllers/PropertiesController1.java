@@ -21,6 +21,7 @@ import org.example.utils.DataValidation;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -33,7 +34,8 @@ public class PropertiesController1 implements Controller, Initializable {
     TextField precisionTextField;
     @FXML
     TextField funcDiminsionalTextField;
-
+    @FXML
+    TextField runsNumberTextField1;
 
     @FXML
     TextField seedDirectoryTextField;
@@ -68,9 +70,11 @@ public class PropertiesController1 implements Controller, Initializable {
         String precisionText=precisionTextField.getText();
         String fundimensional=funcDiminsionalTextField.getText();
         String[] properties={probTournamentWin,precisionText,fundimensional};
+        String runsNumber=runsNumberTextField1.getText();
+
 
         try {
-            loadPropertiesToSettings(probTournamentWin, precisionText, fundimensional, properties);
+            loadPropertiesToSettings(probTournamentWin, precisionText, fundimensional, properties,runsNumber);
             Logger.getGlobal().info("Wprowadzono dane");
             AgThread agThread=new AgThread(agSettings);
             prepareThread(agThread);
@@ -96,19 +100,35 @@ public class PropertiesController1 implements Controller, Initializable {
             List<List<Double>> statistics=(List<List<Double>>)workerStateEvent.getSource().getValue();
             mainWindowController.getExportController().statistic=statistics;
             mainWindowController.resultsMenu();
+            if(statistics.size()>1)
+            {
+                List<List<Double>>dataToPlot=new ArrayList<>();//0-runs mean 1 mean-std 2 mean+std
+                List<Double>runsMean=getRunsMean();
+                dataToPlot.add(runsMean);
+
+                dataToPlot.add(getStd(runsMean,true));
+                dataToPlot.add(getStd(runsMean,false));
+
+
+            }
            mainWindowController.resultsController.loadDataToChart(statistics);
            menuButtonsList.forEach(button -> button.setDisable(false));
            menuButtonsList.get(1).requestFocus();
         });
     }
 
-    private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties) throws Exception {
+    private List<Double> getRunsMean() {
+
+    }
+
+    private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties, String runsNumber) throws Exception {
         isStringsEmpty(properties);//sprawdzam czy nie ma jakis pustych pol
         agSettings.setPrecision(Integer.parseInt(precisionText));
         agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
         agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
         agSettings.setSeed(getRandomSeed(),mainWindowController);
-        agSettings.setRunsNumber(1);
+        agSettings.setRunsNumber(Integer.parseInt(runsNumber));
+
     }
 
 
@@ -150,7 +170,7 @@ public class PropertiesController1 implements Controller, Initializable {
 
         probTournamentWinTextField.textProperty().addListener(new DataValidation(probTournamentWinTextField,5,false));
         funcDiminsionalTextField.textProperty().addListener(new DataValidation(funcDiminsionalTextField,2,true));
-
+        funcDiminsionalTextField.textProperty().addListener(new DataValidation(runsNumberTextField1,3,true));
     }
     private void setDefaultValues() {
 
@@ -159,6 +179,7 @@ public class PropertiesController1 implements Controller, Initializable {
         probTournamentWinTextField.setText("80");
 
         funcDiminsionalTextField.setText("1");
+        runsNumberTextField1.setText("1");
 
     }
 

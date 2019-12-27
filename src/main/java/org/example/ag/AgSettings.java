@@ -37,6 +37,9 @@ public class AgSettings {
 
      public void setRunsNumber(int runsNumber) throws Exception {
           isBigerThen(runsNumber,0,"Liczba uruchomień powinna być wieksza od 0");
+          int maxRuns=100;
+          if(runsNumber>maxRuns)
+               throw new Exception("Moze być maksymalnie "+maxRuns+" uruchomien");
           this.runsNumber=runsNumber;
      }
 

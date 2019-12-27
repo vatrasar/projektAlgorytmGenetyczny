@@ -40,6 +40,8 @@ public class PropertiesController implements Initializable,Controller {
     @FXML
     VBox propertiesPane;
 
+
+
     VBox nextPage=null;
     PropertiesController1 nextPageController;
 
@@ -163,6 +165,7 @@ public class PropertiesController implements Initializable,Controller {
         generationsNumberTextField.setText("300");
 
         populationSizeTextField.setText("160");
+
     }
 
 

@@ -58,7 +58,7 @@ public class Proportional implements SelcetionType {
             }
         }
 
-        Logger.getGlobal().info("Czas selekcji"+(System.currentTimeMillis()-start));
+
         return new Population(parentPopulation);
     }
 

@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import lombok.Setter;
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
+import org.example.ag.AgStatistic;
 
 import java.io.*;
 import java.net.URL;
@@ -66,9 +67,10 @@ public class ExportController {
                 return;
             }
             String plotScriptName="";
-            List<Double>avgForGenerationsList=new ArrayList<>();
+            List<List<Double>>generationsValues= AgStatistic.getGenerationsValues(statistic);
+            List<Double>avgForGenerationsList=AgStatistic.getMeanForGenerations(generationsValues);
 
-            getMeanForGenerations(avgForGenerationsList);
+
             PrintWriter printWriter= null;
             if(statistic.size()==1)
             {
@@ -94,14 +96,14 @@ public class ExportController {
             {
                 plotScriptName="gnuplotScriptMultiRun.plt";
 
-                List<Double>standardDeviationForGenarationsList=new ArrayList<>();
-                List<List<Double>>generationsValues=getGenerationsValues();
-                getStdForGenerations(standardDeviationForGenarationsList, generationsValues);
+
+
+                List<Double>stdValues= AgStatistic.getStdForGenerations(generationsValues);
                 try {
                     printWriter = new PrintWriter(file.getAbsolutePath()+"/data.txt");
                     for(int i=0;i<avgForGenerationsList.size();i++)
                     {
-                        printWriter.write((i+1)+" "+avgForGenerationsList.get(i)+" "+standardDeviationForGenarationsList.get(i)+"\n");
+                        printWriter.write((i+1)+" "+avgForGenerationsList.get(i)+" "+stdValues.get(i)+"\n");
                     }
                     printWriter.close();
                 } catch (FileNotFoundException e) {
@@ -140,47 +142,5 @@ public class ExportController {
         }
     }
 
-    private void getStdForGenerations(List<Double> standardDeviationForGenarationsList, List<List<Double>> generationsValues) {
-        for(List<Double> generation:generationsValues) {
-            double[] generationArray=toDoubleArray(generation);
-            StandardDeviation standardDeviation = new StandardDeviation();
-            standardDeviationForGenarationsList.add(standardDeviation.evaluate(generationArray));
 
-        }
-    }
-
-    private void getMeanForGenerations(List<Double> avgForGenerationsList) {
-        for(int i: IntStream.range(0,statistic.get(0).size()).boxed().collect(Collectors.toList()))
-        {
-
-            double iAvg=0;
-            for (List<Double>run :statistic)
-            {
-                iAvg+=run.get(i);
-            }
-            iAvg/=statistic.size();
-            avgForGenerationsList.add(iAvg);
-        }
-    }
-
-    private double[] toDoubleArray(List<Double> generation) {
-        double[] array = new double[generation.size()];
-        for (int i = 0; i < generation.size(); i++) {
-            array[i] = generation.get(i);
-
-        }
-        return array;
-    }
-
-    private List<List<Double>> getGenerationsValues()
-    {
-        List<List<Double>> generationsValues = new ArrayList<>();
-
-        for (int i : IntStream.range(0, statistic.get(0).size()).boxed().collect(Collectors.toList())) {
-            generationsValues.add(statistic.stream().map(run -> run.get(i)).collect(Collectors.toList()));
-        }
-
-
-        return generationsValues;
-    }
 }
