@@ -2,10 +2,7 @@ package org.example.ag;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.ag.selection.Proportional;
-import org.example.ag.selection.SelcetionType;
-import org.example.ag.selection.TournamentHard;
-import org.example.ag.selection.TournamentSoft;
+import org.example.ag.selection.*;
 import org.example.controllers.MainWindowControler;
 
 
@@ -13,7 +10,7 @@ import org.example.controllers.MainWindowControler;
 public class AgSettings {
 
      int generationsNumber;
-     SelcetionType selectionType;
+     SelcetionFun selectionType;
      @Setter FunctionType functionType;
      int funDimensional;
      double probTournamentWin;
@@ -25,6 +22,7 @@ public class AgSettings {
      int populationSize;
      long seed;
      int runsNumber;
+     int tournametSize;
      public void setPrecision(int precision) throws Exception {
           int max_prec=8;
           if(precision>max_prec)
@@ -138,7 +136,7 @@ public class AgSettings {
           return FunctionType.SPHERICAL_FUNCTION;
      }
 
-     private SelcetionType determineSelectionType(String selectionType) {
+     private SelcetionFun determineSelectionType(String selectionType) {
           switch (selectionType)
           {
                case"Proporcjonalna":
@@ -152,4 +150,8 @@ public class AgSettings {
      }
 
 
+     public void setTounamentSize(int value) throws Exception {
+          isBigerThen(populationSize,value,"Populacja musi być większa od rozmiaru turnieju");
+          isBigerThen(value,1,"Rozmiar turnieju powinnien być większy niż 1");
+     }
 }

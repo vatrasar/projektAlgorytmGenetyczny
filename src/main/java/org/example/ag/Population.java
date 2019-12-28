@@ -2,13 +2,10 @@ package org.example.ag;
 
 import javafx.util.Pair;
 import lombok.Getter;
-import org.example.ag.selection.SelcetionType;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

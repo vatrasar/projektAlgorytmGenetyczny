@@ -49,7 +49,7 @@
           <children>
             <VBox id="" prefHeight="286.0" prefWidth="259.0">
               <children>
-                <VBox prefHeight="108.0" prefWidth="249.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="66.0" prefWidth="249.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label prefHeight="39.0" prefWidth="256.0" text="Precycja" wrapText="true">
                       <VBox.margin>
@@ -63,10 +63,10 @@
                     </TextField>
                   </children>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="89.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="66.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Liczba wymiarów funkcji" underline="false" wrapText="true">
                       <VBox.margin>
@@ -83,21 +83,35 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="108.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="66.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                            <children>
                               <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Wczytaj ziarno funkcji losowej" underline="false" wrapText="true">
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
                               </Label>
-                              <CheckBox mnemonicParsing="false">
+                              <CheckBox fx:id="seedCheckBox" mnemonicParsing="false">
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets top="5.0" />
                                  </VBox.margin></CheckBox>
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="66.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                           <children>
+                              <Label prefHeight="39.0" prefWidth="256.0" text="Wielkość turnieju" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets fx:id="x11" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField id="generationsNumber" fx:id="tournamentSizeTextField1" prefHeight="22.0" prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets top="10.0" fx:id="x111" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
                         </VBox>
               </children>
               <HBox.margin>
@@ -106,7 +120,21 @@
             </VBox>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="108.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                        <VBox prefHeight="66.0" prefWidth="256.0" styleClass="propertiesRowVbox">
+                           <children>
+                              <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Liczba uruchomień algorytmu" underline="false" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets fx:id="x1" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField id="probTournamentWin" fx:id="runsNumberTextField1" prefHeight="22.0" prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets top="10.0" fx:id="x12" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="66.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                            <children>
                               <Label prefHeight="39.0" prefWidth="256.0" text="Wybierz ziarno funkcji losowej" wrapText="true">
                                  <VBox.margin>
@@ -135,7 +163,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </VBox>
-                        <VBox layoutX="10.0" layoutY="50.0" prefHeight="89.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                        <VBox layoutX="10.0" layoutY="50.0" prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                            <children>
                               <Label prefHeight="39.0" prefWidth="256.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" wrapText="true">
                                  <VBox.margin>
@@ -151,20 +179,6 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
-                        </VBox>
-                        <VBox prefHeight="108.0" prefWidth="256.0" styleClass="propertiesRowVbox">
-                           <children>
-                              <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="39.0" prefWidth="256.0" text="Liczba wymiarów funkcji" underline="false" wrapText="true">
-                                 <VBox.margin>
-                                    <Insets fx:id="x1" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField id="probTournamentWin" fx:id="runsNumberTextField1" prefHeight="22.0" prefWidth="200.0">
-                                 <VBox.margin>
-                                    <Insets top="10.0" fx:id="x12" />
-                                 </VBox.margin>
-                              </TextField>
-                           </children>
                         </VBox>
               </children>
             </VBox>

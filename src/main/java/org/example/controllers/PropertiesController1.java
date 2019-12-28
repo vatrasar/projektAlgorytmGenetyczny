@@ -4,24 +4,27 @@ package org.example.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lombok.Setter;
 import org.example.ag.AgSettings;
 import org.example.ag.AgStatistic;
 import org.example.ag.AgThread;
+import org.example.ag.SelcetionType;
+import org.example.ag.selection.SelectionType;
 import org.example.utils.DataValidation;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
@@ -37,7 +40,11 @@ public class PropertiesController1 implements Controller, Initializable {
 
     @FXML
     TextField seedDirectoryTextField;
+    @FXML
+    CheckBox seedCheckBox;
 
+    @FXML
+    TextField tournamentSizeTextField1;
     StackPane mainPane;
     VBox progressPane;
 
@@ -53,9 +60,14 @@ public class PropertiesController1 implements Controller, Initializable {
         setDefaultValues();
         setTextFieldsForNumbers();
         Tooltip tooltip=new Tooltip("Wartości w procentach");
-        Tooltip precisionTooltip=new Tooltip("Do którego miejsca po przecinku");
+        Tooltip precisionTooltip=new Tooltip("Do którego miejsca po przecinku. Maksymalnie 8");
+        Tooltip runsTooltip=new Tooltip("Maksymalnie 100");
+        precisionTooltip.setShowDelay(Duration.millis(10));
+        runsTooltip.setShowDelay(Duration.millis(10));
         probTournamentWinTextField.setTooltip(tooltip);
         precisionTextField.setTooltip(precisionTooltip);
+        runsNumberTextField1.setTooltip(runsTooltip);
+
     }
 
     @FXML
@@ -69,10 +81,10 @@ public class PropertiesController1 implements Controller, Initializable {
         String fundimensional=funcDiminsionalTextField.getText();
         String[] properties={probTournamentWin,precisionText,fundimensional};
         String runsNumber=runsNumberTextField1.getText();
-
+        String tournamentSize=tournamentSizeTextField1.getText();
 
         try {
-            loadPropertiesToSettings(probTournamentWin, precisionText, fundimensional, properties,runsNumber);
+            loadPropertiesToSettings(probTournamentWin, precisionText, fundimensional, properties,runsNumber,tournamentSize);
             Logger.getGlobal().info("Wprowadzono dane");
             AgThread agThread=new AgThread(agSettings);
             prepareThread(agThread);
@@ -145,13 +157,35 @@ public class PropertiesController1 implements Controller, Initializable {
     }
 
 
-    private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties, String runsNumber) throws Exception {
+    private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties, String runsNumber, String tournamentSize) throws Exception {
         isStringsEmpty(properties);//sprawdzam czy nie ma jakis pustych pol
         agSettings.setPrecision(Integer.parseInt(precisionText));
         agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
         agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
-        agSettings.setSeed(getRandomSeed(),mainWindowController);
+        if(agSettings.getSelectionType().getSelectionType()!= SelectionType.PROPORTIONAL)
+            agSettings.setTounamentSize(Integer.parseInt(tournamentSize));
+        if(seedCheckBox.isSelected())
+        {
+           long seed=getSeedFromFile();
+           agSettings.setSeed(seed,mainWindowController);
+        }
+        else
+            agSettings.setSeed(getRandomSeed(),mainWindowController);
         agSettings.setRunsNumber(Integer.parseInt(runsNumber));
+
+    }
+
+    private long getSeedFromFile() throws Exception {
+        Scanner in = null;
+        try {
+            in = new Scanner(new File(seedDirectoryTextField.getText()));
+            String seed= in.nextLine();
+            return Long.parseLong(seed);
+        } catch (Exception e) {
+            throw new Exception("Plik ziarna nie odpowiada");
+        }
+
+
 
     }
 
@@ -195,6 +229,7 @@ public class PropertiesController1 implements Controller, Initializable {
         probTournamentWinTextField.textProperty().addListener(new DataValidation(probTournamentWinTextField,5,false));
         funcDiminsionalTextField.textProperty().addListener(new DataValidation(funcDiminsionalTextField,2,true));
         funcDiminsionalTextField.textProperty().addListener(new DataValidation(runsNumberTextField1,3,true));
+        tournamentSizeTextField1.textProperty().addListener(new DataValidation(runsNumberTextField1,3,true));
     }
     private void setDefaultValues() {
 
@@ -204,6 +239,7 @@ public class PropertiesController1 implements Controller, Initializable {
 
         funcDiminsionalTextField.setText("1");
         runsNumberTextField1.setText("1");
+        tournamentSizeTextField1.setText("3");
 
     }
 

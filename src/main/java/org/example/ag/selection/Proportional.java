@@ -6,17 +6,26 @@ import org.example.ag.Population;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class Proportional implements SelcetionType {
+public class Proportional implements SelcetionFun {
+
+    SelectionType selectionType;
+    @Override
+    public SelectionType getSelectionType() {
+        return selectionType;
+    }
+
+    public Proportional() {
+        this.selectionType = SelectionType.PROPORTIONAL;
+    }
+
     @Override
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
         long start=System.currentTimeMillis();
         int size=inPoupulation.getPopulation().size();
         final double scoreSum=inPoupulation.getSumOfChromosomesScores();
-       
+
 
         List<Double> chromosomesSurviveProbability=inPoupulation.getPopulation().stream().map(a->a.getScore()/scoreSum).collect(Collectors.toList());
 

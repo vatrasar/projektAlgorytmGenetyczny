@@ -21,13 +21,13 @@ function makeChart(content) {
     if(json.length>1)
     {
         var standardDeviation1={
-            label: 'Górne odchylenie',
+            label: 'Dolne odchylenie',
             fill:0,
             borderColor:'rgb(195,105,240)',
             data: json[1]
         };
         var standardDeviation2={
-            label: 'Dolne odchylenie',
+            label: 'Górne odchylenie',
             fill:0,
             borderColor: 'rgb(194,105,240)',
             data: json[2]
