@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import org.example.ag.AgSettings;
+import org.example.ag.selection.SelectionType;
 import org.example.utils.DataValidation;
 
 import java.io.IOException;
@@ -73,9 +74,10 @@ public class PropertiesController implements Initializable,Controller {
                 nextPageController.setMainPane(mainPane);
                 nextPageController.setAgSettings(agSettings);
                 nextPageController.setMenuButonsList(menuButtonsList);
-                nextPageController.setPerviousPage(propertiesPane);
+
                 nextPageController.setProgressController(progressController);
                 nextPageController.setMainWindowController(mainWindowController);
+
 
             }
             else
@@ -91,6 +93,27 @@ public class PropertiesController implements Initializable,Controller {
             showAlertMessage(e);
         }
 
+        setTournamentControls();
+
+
+    }
+
+    private void setTournamentControls() {
+        switch (nextPageController.agSettings.getSelectionType().getSelectionType())
+        {
+            case PROPORTIONAL:
+                nextPageController.tournamentSizeTextField1.setDisable(true);
+                nextPageController.probTournamentWinTextField.setDisable(true);
+                break;
+            case TOURNAMENT_HARD:
+                nextPageController.tournamentSizeTextField1.setDisable(false);
+                nextPageController.probTournamentWinTextField.setDisable(true);
+                break;
+            case TOURNAMENT_SOFT:
+                nextPageController.tournamentSizeTextField1.setDisable(false);
+                nextPageController.probTournamentWinTextField.setDisable(false);
+                break;
+        }
     }
 
     private AgSettings readDataFromInputs() throws Exception {

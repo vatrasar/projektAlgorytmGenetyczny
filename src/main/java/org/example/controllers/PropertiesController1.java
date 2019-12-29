@@ -48,7 +48,7 @@ public class PropertiesController1 implements Controller, Initializable {
     StackPane mainPane;
     VBox progressPane;
 
-    @Setter VBox  perviousPage;
+
     AgSettings agSettings;
     private List<Button> menuButtonsList;
     private ProgressController progressController;
@@ -195,7 +195,7 @@ public class PropertiesController1 implements Controller, Initializable {
     public void backToFirstPage()
     {
         mainPane.getChildren().clear();
-        mainPane.getChildren().add(perviousPage);
+        mainPane.getChildren().add(mainWindowController.propertiesPane);
     }
     public long getRandomSeed()
     {
