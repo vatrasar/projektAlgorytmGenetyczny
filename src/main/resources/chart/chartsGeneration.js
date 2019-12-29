@@ -5,8 +5,11 @@ function makeChart(content) {
 
     var json=JSON.parse(content);
     var datas=[];
+    var labelData1='Wartości funkcji';
+    if(json.length>1)
+        labelData1='Średnie wartości funkcji';
     var data1={
-        label: 'Uruchomienie 1',
+        label: 'Wartości funkcji',
         fill:false,
         borderColor: 'rgb(120,185,250)',
         data: json[0]
@@ -21,13 +24,13 @@ function makeChart(content) {
     if(json.length>1)
     {
         var standardDeviation1={
-            label: 'Dolne odchylenie',
+            label: 'Odchylenie standardowe',
             fill:0,
             borderColor:'rgb(195,105,240)',
             data: json[1]
         };
         var standardDeviation2={
-            label: 'Górne odchylenie',
+            label: '',
             fill:0,
             borderColor: 'rgb(194,105,240)',
             data: json[2]
