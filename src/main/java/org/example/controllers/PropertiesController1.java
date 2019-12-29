@@ -16,7 +16,7 @@ import lombok.Setter;
 import org.example.ag.AgSettings;
 import org.example.ag.AgStatistic;
 import org.example.ag.AgThread;
-import org.example.ag.SelcetionType;
+
 import org.example.ag.selection.SelectionType;
 import org.example.utils.DataValidation;
 
@@ -158,12 +158,14 @@ public class PropertiesController1 implements Controller, Initializable {
 
 
     private void loadPropertiesToSettings(String probTournamentWin, String precisionText, String fundimensional, String[] properties, String runsNumber, String tournamentSize) throws Exception {
+
         isStringsEmpty(properties);//sprawdzam czy nie ma jakis pustych pol
         agSettings.setPrecision(Integer.parseInt(precisionText));
         agSettings.setFunctionDimensional(Integer.parseInt(fundimensional));
-        agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
         if(agSettings.getSelectionType().getSelectionType()!= SelectionType.PROPORTIONAL)
             agSettings.setTounamentSize(Integer.parseInt(tournamentSize));
+        agSettings.setProbTournamentWin(Double.parseDouble(probTournamentWin));
+
         if(seedCheckBox.isSelected())
         {
            long seed=getSeedFromFile();

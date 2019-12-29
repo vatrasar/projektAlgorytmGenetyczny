@@ -78,6 +78,7 @@ public class AgSettings {
           } else {
                throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
           }
+          selectionType.setTournamentProb(probTournamentWin);
      }
 
      public void setProbMutation(double probMutation) throws Exception {
@@ -106,6 +107,7 @@ public class AgSettings {
           this.functionType=determineFunctionType(functionType);
 
      }
+
 
      public AgSettings(int generationsNumber, String selectionType, String functionType, double probTournamentWin, double probMutation, double probCross, int precision, int funDimensional) throws Exception  {
           this.generationsNumber = generationsNumber;
@@ -142,9 +144,9 @@ public class AgSettings {
                case"Proporcjonalna":
                     return new Proportional();
                case"Turniejowa miękka":
-                    return new TournamentSoft();
+                    return new TournamentSoft(tournametSize,probTournamentWin);
                case "Turniejowa twarda":
-                    return new TournamentHard();
+                    return new TournamentHard(tournametSize);
           }
           return new Proportional();
      }
@@ -153,5 +155,9 @@ public class AgSettings {
      public void setTounamentSize(int value) throws Exception {
           isBigerThen(populationSize,value,"Populacja musi być większa od rozmiaru turnieju");
           isBigerThen(value,1,"Rozmiar turnieju powinnien być większy niż 1");
+          tournametSize=value;
+          selectionType.setTournamentSize(value);
      }
+
+
 }

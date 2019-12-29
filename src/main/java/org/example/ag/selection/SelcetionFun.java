@@ -7,4 +7,8 @@ import java.util.Random;
 public interface SelcetionFun {
     public Population getPopulationAfterSelection(Population inPoupulation,Random random);
     public SelectionType getSelectionType();
+
+    void setTournamentSize(int value);
+
+    void setTournamentProb(double value);
 }

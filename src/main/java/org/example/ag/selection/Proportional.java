@@ -21,6 +21,16 @@ public class Proportional implements SelcetionFun {
     }
 
     @Override
+    public void setTournamentSize(int value) {
+        return;
+    }
+
+    @Override
+    public void setTournamentProb(double value) {
+        return;
+    }
+
+    @Override
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
         long start=System.currentTimeMillis();
         int size=inPoupulation.getPopulation().size();
