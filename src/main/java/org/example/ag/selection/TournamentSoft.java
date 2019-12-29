@@ -1,8 +1,14 @@
 package org.example.ag.selection;
 
+import org.example.ag.Chromosome;
 import org.example.ag.Population;
 
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TournamentSoft implements SelcetionFun {
     SelectionType selectionType;
@@ -15,7 +21,24 @@ public class TournamentSoft implements SelcetionFun {
 
     @Override
     public Population getPopulationAfterSelection(Population inPoupulation, Random random) {
-        return null;
+
+
+        List<Chromosome> populationList = new ArrayList<>();
+        while (populationList.size()<inPoupulation.getPopulation().size())
+        {
+            List<Chromosome>tournamentPopulation = new ArrayList<>();
+            IntStream.range(0,tournamentSize).forEach(i->{
+                int number=random.nextInt(inPoupulation.getPopulation().size());
+                tournamentPopulation.add(inPoupulation.getPopulation().get(number));
+            });
+            Chromosome winer=tournamentPopulation.stream().sorted((a,b)->{
+                return Double.compare(b.getScore(),a.getScore());
+            }).collect(Collectors.toList()).get(0);
+            if(random.nextDouble()<tournamentProb/100)
+                populationList.add(winer);
+        }
+        return new Population(populationList);
+
     }
 
     public TournamentSoft(int tournamentSize,double tournamentProb) {
