@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import lombok.Setter;
+
 import org.example.ag.AgSettings;
 import org.example.ag.AgStatistic;
 import org.example.ag.AgThread;

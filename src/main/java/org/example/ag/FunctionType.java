@@ -1,7 +1,5 @@
 package org.example.ag;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 import java.util.function.BiFunction;

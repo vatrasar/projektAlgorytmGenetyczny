@@ -1,7 +1,7 @@
 package org.example.ag;
 
 
-import lombok.RequiredArgsConstructor;
+
 import org.example.controllers.ProgressController;
 
 import java.util.BitSet;
@@ -11,7 +11,7 @@ import java.util.Timer;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-@RequiredArgsConstructor
+
 public class AgSingleRun extends Thread {
     final AgSettings agSettings;
     final int runId;
@@ -20,6 +20,16 @@ public class AgSingleRun extends Thread {
     final Random random;
     final AgStatistic agStatistic;
     final AgThread parentThread;
+
+    public AgSingleRun(AgSettings agSettings, int runId, int chromosomeSize, int overFlowSize, Random random, AgStatistic agStatistic, AgThread parentThread) {
+        this.agSettings = agSettings;
+        this.runId = runId;
+        this.chromosomeSize = chromosomeSize;
+        this.overFlowSize = overFlowSize;
+        this.random = random;
+        this.agStatistic = agStatistic;
+        this.parentThread = parentThread;
+    }
 
     @Override
     public void run() {

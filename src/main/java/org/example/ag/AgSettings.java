@@ -1,17 +1,16 @@
 package org.example.ag;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import org.example.ag.selection.*;
 import org.example.controllers.MainWindowControler;
 
 
-@Getter
+
 public class AgSettings {
 
      int generationsNumber;
      SelcetionFun selectionType;
-     @Setter FunctionType functionType;
+     FunctionType functionType;
      int funDimensional;
      double probTournamentWin;
      double probMutation;
@@ -31,6 +30,58 @@ public class AgSettings {
           }
 
           this.precision = precision;
+     }
+
+     public void setSelectionType(SelcetionFun selectionType) {
+          this.selectionType = selectionType;
+     }
+
+     public int getGenerationsNumber() {
+          return generationsNumber;
+     }
+
+     public SelcetionFun getSelectionType() {
+          return selectionType;
+     }
+
+     public FunctionType getFunctionType() {
+          return functionType;
+     }
+
+     public int getFunDimensional() {
+          return funDimensional;
+     }
+
+     public double getProbTournamentWin() {
+          return probTournamentWin;
+     }
+
+     public double getProbMutation() {
+          return probMutation;
+     }
+
+     public double getProbCross() {
+          return probCross;
+     }
+
+     public int getPrecision() {
+          return precision;
+     }
+
+     public int getPopulationSize() {
+          return populationSize;
+     }
+
+     public long getSeed() {
+          return seed;
+     }
+
+     public int getRunsNumber() {
+          return runsNumber;
+     }
+
+     public int getTournametSize() {
+          return tournametSize;
      }
 
      public void setRunsNumber(int runsNumber) throws Exception {

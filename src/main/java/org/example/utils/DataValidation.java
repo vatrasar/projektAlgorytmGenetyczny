@@ -3,9 +3,8 @@ package org.example.utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+
 public class DataValidation implements ChangeListener<String> {
 
     final TextField textField;
@@ -30,5 +29,11 @@ public class DataValidation implements ChangeListener<String> {
 
 
 
+    }
+
+    public DataValidation(TextField textField, int digNumber, boolean isInteger) {
+        this.textField = textField;
+        this.digNumber = digNumber;
+        this.isInteger = isInteger;
     }
 }

@@ -1,7 +1,7 @@
 package org.example.ag;
 
 import javafx.util.Pair;
-import lombok.Getter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,15 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Getter
+
 public class Population {
     List<Chromosome> population;
 
+    public List<Chromosome> getPopulation() {
+        return population;
+    }
 
-    public Population(int populationSize,int chomosomeSize,int overFlowSize,Random random) {
+    public Population(int populationSize, int chomosomeSize, int overFlowSize, Random random) {
         this.population=new ArrayList<>();
 
 

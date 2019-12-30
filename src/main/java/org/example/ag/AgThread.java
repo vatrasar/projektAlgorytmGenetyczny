@@ -2,7 +2,7 @@ package org.example.ag;
 
 
 import javafx.concurrent.Task;
-import lombok.RequiredArgsConstructor;
+
 
 import java.util.ArrayList;
 
@@ -12,12 +12,16 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RequiredArgsConstructor
+
 public class AgThread extends Task<List<List<Double>>> {
 
    final AgSettings agSettings;
 
     List<AgStatistic>agStatisticList;
+
+    public AgThread(AgSettings agSettings) {
+        this.agSettings = agSettings;
+    }
 
     @Override
     public List<List<Double>> call() {

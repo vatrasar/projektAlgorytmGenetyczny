@@ -11,8 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import javafx.util.Pair;
-import lombok.Getter;
-import lombok.Setter;
+
 import org.example.controllers.Controller;
 
 import java.io.IOException;
@@ -40,8 +39,8 @@ public class MainWindowControler implements Initializable, Controller {
     Button curvesButton;
     ResultsController resultsController;
 
-    @Setter long seed;
-    @Setter @Getter
+    long seed;
+
     ExportController exportController;
 
 
@@ -102,5 +101,15 @@ public class MainWindowControler implements Initializable, Controller {
         mainPane.getChildren().add(propertiesPane);
     }
 
+    public ExportController getExportController() {
+        return exportController;
+    }
 
+    public void setExportController(ExportController exportController) {
+        this.exportController = exportController;
+    }
+
+    public void setSeed(long seed) {
+        this.seed = seed;
+    }
 }

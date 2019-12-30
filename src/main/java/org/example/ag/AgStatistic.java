@@ -1,7 +1,5 @@
 package org.example.ag;
 
-import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

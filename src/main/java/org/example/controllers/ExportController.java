@@ -4,9 +4,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import lombok.Setter;
-import org.apache.commons.math3.stat.descriptive.moment.Mean;
-import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
+
+
 import org.example.ag.AgStatistic;
 
 import java.io.*;
@@ -21,10 +20,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ExportController {
-    @Setter MainWindowControler mainWindowControler;
+    MainWindowControler mainWindowControler;
     List<List<Double>> statistic;
 
-   public void saveRandomSeed()
+    public void setMainWindowControler(MainWindowControler mainWindowControler) {
+        this.mainWindowControler = mainWindowControler;
+    }
+
+    public void saveRandomSeed()
    {
        File file = getDirectory();
        if(file==null)
