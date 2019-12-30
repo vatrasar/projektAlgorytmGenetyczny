@@ -21,10 +21,22 @@ public class AgStatistic {
     }
     public static List<Double> getStdForGenerations(List<List<Double>> generationsValues) {
         List<Double>standardDeviationForGenarationsList=new ArrayList<>();
-        for(List<Double> generation:generationsValues) {
-            double[] generationArray=toDoubleArray(generation);
-            StandardDeviation standardDeviation = new StandardDeviation();
-            standardDeviationForGenarationsList.add(standardDeviation.evaluate(generationArray));
+        List<Double>means=getMeanForGenerations(generationsValues);
+        for(int p=0;p<generationsValues.size();p++) {
+            List<Double> generation=generationsValues.get(p);
+//            double[] generationArray=toDoubleArray(generation);
+//            StandardDeviation standardDeviation = new StandardDeviation();
+//            standardDeviationForGenarationsList.add(standardDeviation.evaluate(generationArray));
+            double acum=0;
+            for(int i=0;i<generation.size();i++)
+            {
+                double dev=Math.pow(means.get(p)-generation.get(i),2);
+                acum+=dev;
+
+            }
+            acum/=generation.size();
+            acum=Math.sqrt(acum);
+            standardDeviationForGenarationsList.add(acum);
 
         }
         return standardDeviationForGenarationsList;

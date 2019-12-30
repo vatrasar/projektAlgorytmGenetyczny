@@ -25,7 +25,7 @@ public class ChromosomeTest {
 
         Chromosome chromosome=new Chromosome(8,5,new Random());//assume that is 11 possible values
         List<Integer>result=chromosome.mapNumbersToNoOverflow(IntStream.range(0,20).boxed().collect(Collectors.toList()));
-        assertEquals((long)result.get(19),19);
+        assertEquals((long)result.get(19),14);
         assertEquals((long)result.get(1),0);
     }
     @Test
@@ -42,11 +42,7 @@ public class ChromosomeTest {
 
         Chromosome chromosome=new Chromosome(14,6144,new Random());
         chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
-        while (chromosome.chrmosomeArgs.get(0)<5.14)
-        {
-            chromosome=new Chromosome(14,6144,new Random());
-            chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
-        }
+
         Logger.getGlobal().info("Jest");
         chromosome.convertBitSetToArgs(1,FunctionType.SPHERICAL_FUNCTION,3);
     }

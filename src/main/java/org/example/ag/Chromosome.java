@@ -73,7 +73,7 @@ public class Chromosome {
                 }
                 else
                 {
-                   return number/2-1;
+                   return (number+1)/2-1;
                 }
             }
             else
