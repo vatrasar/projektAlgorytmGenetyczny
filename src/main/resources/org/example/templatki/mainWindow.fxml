@@ -19,14 +19,23 @@
             <Image url="@../../../images/logo.jpg" />
           </image>
         </ImageView>
-        <Label id="menuLabel" alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu" VBox.vgrow="ALWAYS">
+        <Label id="menuLabel" alignment="CENTER" prefHeight="47.0" prefWidth="139.0" text="Menu" textFill="#2a2c2a" VBox.vgrow="ALWAYS">
           <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
           </font>
         </Label>
-        <Button fx:id="settingsButton" cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#propertiesMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Ustawinia" textOverrun="CLIP" VBox.vgrow="ALWAYS" />
-        <Button fx:id="resultsButton" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#resultsMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wyniki" VBox.vgrow="ALWAYS" />
-        <Button fx:id="curvesButton" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#eksportMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Eksport" VBox.vgrow="ALWAYS" />
+        <Button fx:id="settingsButton" cache="false" cacheHint="DEFAULT" cancelButton="false" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#propertiesMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Ustawinia" textOverrun="CLIP" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+        <Button fx:id="resultsButton" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#resultsMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Wyniki" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+        <Button fx:id="curvesButton" minHeight="16.0" mnemonicParsing="false" onMouseClicked="#eksportMenu" prefHeight="37.0" prefWidth="139.0" styleClass="buttonMenu" text="Eksport" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
       </children>
     </VBox>
     <StackPane id="" fx:id="mainPane" prefHeight="529.0" prefWidth="651.9998779296875" HBox.hgrow="ALWAYS" />

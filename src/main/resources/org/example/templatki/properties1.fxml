@@ -38,9 +38,6 @@
               </font>
             </Label>
           </children>
-          <padding>
-            <Insets left="30.0" />
-          </padding>
           <VBox.margin>
             <Insets bottom="10.0" />
           </VBox.margin>
@@ -55,6 +52,9 @@
                       <VBox.margin>
                         <Insets fx:id="x1" />
                       </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                     </Label>
                     <TextField id="generationsNumber" fx:id="precisionTextField" prefHeight="22.0" prefWidth="200.0">
                       <VBox.margin>
@@ -72,6 +72,9 @@
                       <VBox.margin>
                         <Insets fx:id="x1" />
                       </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                     </Label>
                     <TextField id="probTournamentWin" fx:id="funcDiminsionalTextField" prefHeight="22.0" prefWidth="200.0">
                       <VBox.margin>
@@ -89,6 +92,9 @@
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
                               <CheckBox fx:id="seedCheckBox" mnemonicParsing="false">
                                  <VBox.margin>
@@ -105,6 +111,9 @@
                                  <VBox.margin>
                                     <Insets fx:id="x11" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
                               <TextField id="generationsNumber" fx:id="tournamentSizeTextField1" prefHeight="22.0" prefWidth="200.0">
                                  <VBox.margin>
@@ -126,6 +135,9 @@
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
                               <TextField id="probTournamentWin" fx:id="runsNumberTextField1" prefHeight="22.0" prefWidth="200.0">
                                  <VBox.margin>
@@ -140,6 +152,9 @@
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
                               <HBox prefWidth="200.0">
                                  <children>
@@ -165,10 +180,13 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="50.0" prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                            <children>
-                              <Label prefHeight="39.0" prefWidth="256.0" text="Prawdopowobieństwo wygrania turnieju (selekcja turniejowa miękka)" wrapText="true">
+                              <Label prefHeight="39.0" prefWidth="256.0" text="Prawdopowobieństwo wygrania turnieju" wrapText="true">
                                  <VBox.margin>
                                     <Insets fx:id="x1" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                               </Label>
                               <TextField id="generationsNumber" fx:id="probTournamentWinTextField" prefHeight="22.0" prefWidth="200.0">
                                  <VBox.margin>
@@ -183,9 +201,6 @@
               </children>
             </VBox>
           </children>
-          <padding>
-            <Insets left="20.0" right="20.0" />
-          </padding>
         </HBox>
         <HBox alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="552.0">
           <children>

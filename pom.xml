@@ -93,10 +93,10 @@
                     <compress>2</compress>
                     <noHeaderFiles>true</noHeaderFiles>
                     <noManPages>true</noManPages>
-                    <launcher>hellofx</launcher>
+                    <launcher>launcher</launcher>
                     <jlinkImageName>hello</jlinkImageName>
-                    <jlinkZipName>hellozip</jlinkZipName>
-
+                    <jlinkZipName>hellozi</jlinkZipName>
+<!--                    <jmodsPath>/home/vatrasar/programoowanie/jdk11Windows/jdk-11.0.5/jmods</jmodsPath>-->
                 </configuration>
             </plugin>
 

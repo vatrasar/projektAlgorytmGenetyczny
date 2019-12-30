@@ -40,11 +40,11 @@
           <children>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Liczba Generacji">
+                    <Label prefHeight="38.0" text="Liczba Generacji">
                       <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                       </font>
                     </Label>
                     <TextField id="generationsNumber" fx:id="generationsNumberTextField" prefWidth="200.0">
@@ -54,12 +54,15 @@
                     </TextField>
                   </children>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Rodzaj selekcji" />
+                    <Label text="Rodzaj selekcji">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                     <ChoiceBox id="selectionType" fx:id="selectionTypeChoiceBox" prefWidth="256.0">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
@@ -74,12 +77,15 @@
                     </ChoiceBox>
                   </children>
                   <VBox.margin>
-                    <Insets top="40.0" />
+                    <Insets top="10.0" />
                   </VBox.margin>
                 </VBox>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Funkcja" />
+                    <Label text="Funkcja">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                     <ChoiceBox id="functionType" fx:id="functionTypeChoiceBox" prefWidth="266.0">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
@@ -93,7 +99,7 @@
                     </ChoiceBox>
                   </children>
                   <VBox.margin>
-                    <Insets top="40.0" />
+                    <Insets top="10.0" />
                   </VBox.margin>
                 </VBox>
               </children>
@@ -103,9 +109,12 @@
             </VBox>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Prawdopodobieństwo krzyżowania" />
+                    <Label text="Prawdopodobieństwo krzyżowania" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                     <TextField id="probMutation" fx:id="probCrossTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="5.0" fx:id="x1" />
@@ -113,12 +122,15 @@
                     </TextField>
                   </children>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Prawdopodobieństwo mutacji" />
+                    <Label text="Prawdopodobieństwo mutacji">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                     <TextField id="probCross" fx:id="probMutationTextField" prefWidth="200.0">
                       <VBox.margin>
                         <Insets top="5.0" fx:id="x1" />
@@ -126,15 +138,18 @@
                     </TextField>
                   </children>
                   <VBox.margin>
-                    <Insets top="40.0" />
+                    <Insets top="10.0" />
                   </VBox.margin>
                 </VBox>
-                <VBox prefHeight="51.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
                     <Label prefWidth="256.0" text="Rozmiar populacji" wrapText="true">
                       <VBox.margin>
                         <Insets fx:id="x1" />
                       </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
                     </Label>
                     <TextField id="generationsNumber" fx:id="populationSizeTextField" prefHeight="22.0" prefWidth="200.0">
                       <VBox.margin>
@@ -143,7 +158,7 @@
                     </TextField>
                   </children>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
               </children>
