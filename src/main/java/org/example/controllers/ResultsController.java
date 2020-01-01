@@ -51,6 +51,7 @@ public class ResultsController implements Initializable {
             double last_mean = statistics.get(0).get(genNumber - 1);
             double std = statistics.get(2).get(genNumber - 1) - last_mean;
             resultLabel.setText(String.format(result, last_mean, std));
+            printLastGenResut(statistics,prec);
         }
         else {
             result = "wartość %." + prec+"f";
@@ -58,6 +59,7 @@ public class ResultsController implements Initializable {
             double last_mean = statistics.get(0).get(genNumber - 1);
 
             resultLabel.setText(String.format(result, last_mean));
+            System.out.println();
         }
 
 
@@ -67,6 +69,14 @@ public class ResultsController implements Initializable {
 
 
 
+    }
+
+    private void printLastGenResut(List<List<Double>> statistics,int prec) {
+        String result = "%." + prec+"f" + "/%." + prec+"f";
+        int genNumber = statistics.get(0).size();
+        double last_mean = statistics.get(0).get(genNumber - 1);
+        double std = statistics.get(2).get(genNumber - 1) - last_mean;
+        System.out.println(String.format(result, last_mean, std));
     }
 
 //    private void saveToFile(List<List<Double>> statistics) {

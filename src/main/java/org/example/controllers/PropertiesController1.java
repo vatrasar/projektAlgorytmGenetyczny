@@ -113,6 +113,7 @@ public class PropertiesController1 implements Controller, Initializable {
             List<List<Double>>dataToPlot=new ArrayList<>();//0-runs mean 1 mean-std 2 mean+std
 
 //            printLastGen(statistics);
+
             if(statistics.size()>1)
             {
 

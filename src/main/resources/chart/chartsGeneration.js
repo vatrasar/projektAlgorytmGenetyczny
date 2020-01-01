@@ -26,13 +26,15 @@ function makeChart(content) {
         var standardDeviation1={
             label: 'Odchylenie standardowe',
             fill:0,
-            borderColor:'rgb(195,105,240)',
+            borderColor:'rgb(195,105,240,0.7)',
+            backgroundColor:'rgb(250,154,231,0.5)',
             data: json[1]
         };
         var standardDeviation2={
             label: '',
             fill:0,
-            borderColor: 'rgb(194,105,240)',
+            backgroundColor:'rgb(250,154,231,0.5)',
+            borderColor: 'rgb(194,105,240,0.7)',
             data: json[2]
         };
         datas.push(standardDeviation1);
