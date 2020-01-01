@@ -7,6 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.example.utils.WebListner;
@@ -23,13 +24,16 @@ public class ResultsController implements Initializable {
 
     WebListner listner;
 
+    @FXML
+    Label resultLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         WebEngine engine =chart.getEngine();
         listner= new WebListner(engine);
         engine.getLoadWorker().stateProperty().addListener(listner);
     }
-    public void loadDataToChart(List<List<Double>> statistics)
+    public void loadDataToChart(List<List<Double>> statistics,int prec)
     {
 
         ObjectMapper objectMapper=new ObjectMapper();
@@ -40,7 +44,21 @@ public class ResultsController implements Initializable {
             e.printStackTrace();
         }
         URL url2 = this.getClass().getResource("/chart/charts.html");
+        String result="";
+        if(statistics.size()>1) {
+            result = "wartość %." + prec+"f" + " odchylenie standardowe %." + prec+"f";
+            int genNumber = statistics.get(0).size();
+            double last_mean = statistics.get(0).get(genNumber - 1);
+            double std = statistics.get(2).get(genNumber - 1) - last_mean;
+            resultLabel.setText(String.format(result, last_mean, std));
+        }
+        else {
+            result = "wartość %." + prec+"f";
+            int genNumber = statistics.get(0).size();
+            double last_mean = statistics.get(0).get(genNumber - 1);
 
+            resultLabel.setText(String.format(result, last_mean));
+        }
 
 
         engine.setJavaScriptEnabled(true);

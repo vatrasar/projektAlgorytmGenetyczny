@@ -57,7 +57,7 @@ function makeChart(content) {
                 display: true,
 
             },
-            aspectRatio:1.9,
+            aspectRatio:2,
             scales: {
                 xAxes:[
                     {

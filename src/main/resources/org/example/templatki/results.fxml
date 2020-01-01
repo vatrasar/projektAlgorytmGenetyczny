@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
@@ -26,5 +27,25 @@
          </VBox.margin>
       </HBox>
       <WebView fx:id="chart" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <VBox prefHeight="61.0" prefWidth="652.0">
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="title" text="Wyniki w ostatniej generacji">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text=" wartość 0 odchylenie 0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
+   <stylesheets>
+      <URL value="@../../../css/resultSyles.css" />
+   </stylesheets>
 </VBox>

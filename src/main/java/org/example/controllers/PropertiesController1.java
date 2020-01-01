@@ -111,6 +111,8 @@ public class PropertiesController1 implements Controller, Initializable {
             mainWindowController.getExportController().statistic=statistics;
             mainWindowController.resultsMenu();
             List<List<Double>>dataToPlot=new ArrayList<>();//0-runs mean 1 mean-std 2 mean+std
+
+//            printLastGen(statistics);
             if(statistics.size()>1)
             {
 
@@ -124,10 +126,20 @@ public class PropertiesController1 implements Controller, Initializable {
             }
             else
                 dataToPlot=statistics;
-           mainWindowController.resultsController.loadDataToChart(dataToPlot);
+
+
+           mainWindowController.resultsController.loadDataToChart(dataToPlot,agSettings.getPrecision());
            menuButtonsList.forEach(button -> button.setDisable(false));
            menuButtonsList.get(1).requestFocus();
         });
+    }
+
+    private void printLastGen(List<List<Double>> statistics) {
+        int size=statistics.get(0).size();
+        for(List<Double> stat:statistics)
+        {
+            System.out.println(stat.get(size-1));
+        }
     }
 
     private List<Double> getStd(List<Double> runsMean, List<List<Double>> statistics, boolean isUnderLine) {
