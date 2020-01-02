@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -103,6 +104,7 @@ public class ExportController {
 
                 List<Double>stdValues= AgStatistic.getStdForGenerations(generationsValues);
                 try {
+                    Files.delete(new File(file.getAbsolutePath()+"/data.txt").toPath());
                     printWriter = new PrintWriter(file.getAbsolutePath()+"/data.txt");
                     for(int i=0;i<avgForGenerationsList.size();i++)
                     {
@@ -110,6 +112,8 @@ public class ExportController {
                     }
                     printWriter.close();
                 } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -125,17 +129,19 @@ public class ExportController {
 
     private void copyGnuPlotScript(File file, String plotScriptName) {
         try {
-            URL url =getClass().getResource("/chartGnuplot/"+plotScriptName);
-            Files.copy(new File(url.getPath()).toPath(),new File(file.getPath()+"/"+plotScriptName).toPath());
-
+            URL url =this.getClass().getResource("/chartGnuplot/"+plotScriptName);
+//            Files.copy(new File(url.getPath()).toPath(),new File(file.getPath()+"/"+plotScriptName).toPath());
+            copyFileFromResources(file, plotScriptName, url);
 
         }
         catch (FileAlreadyExistsException e)
         {
             try {
-                URL url =getClass().getResource("/chartGnuplot/"+plotScriptName);
+                URL url =this.getClass().getResource("/chartGnuplot/"+plotScriptName);
+
                 Files.delete(new File(file.getPath()+"/"+plotScriptName).toPath());
-                Files.copy(new File(url.getPath()).toPath(),new File(file.getPath()+"/"+plotScriptName).toPath());
+                copyFileFromResources(file, plotScriptName, url);
+                //Files.copy(new File(url.getPath()).toPath(),new File(file.getPath()+"/"+plotScriptName).toPath());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -143,6 +149,39 @@ public class ExportController {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void copyFileFromResources(File file, String plotScriptName, URL url) throws IOException {
+        //test
+//        URL url2 = this.getClass().getResource("/chart/charts.html");
+
+
+        Files.createFile(new File(file.getPath()+"/"+plotScriptName).toPath());
+
+
+
+
+        String pltFile;
+        if(plotScriptName.equals("gnuplotScriptMultiRun.plt"))
+        {
+            pltFile="set style data lines\n" +
+                    "set xlabel \"Iteracje\"\n" +
+                    "set ylabel \"Średnia najlepsza wartosc funkcji\"\n" +
+                    "#set key at 95,80\n" +
+                    "#set label \"b=1.4, k=6\" at 5,110\n" +
+                    "plot 'data.txt' using 1:2:3 with yerrorbars lc 4 title \"odchylenie standardowe\",\\\n" +
+                    " 'data.txt' using 1:2 with lines lc 4 lw 3 title \"Średnia najlepsza wartości\",\\\n";
+        }
+        else
+            pltFile="set style data lines\n" +
+                    "set xlabel \"Iteracje\"\n" +
+                    "set ylabel \"Najlepsza wartość funkcji\"\n" +
+                    "#set key at 95,80\n" +
+                    "#set label \"b=1.4, k=6\" at 5,110\n" +
+                    "plot  'data.txt' using 1:2 with lines lc 4 lw 3 title \"wartości funkcji dla najlepszego chromosoma\"";
+        PrintWriter printWriter=new PrintWriter (new File(file.getPath()+"/"+plotScriptName).toPath().toString());
+        printWriter.write(pltFile);
+        printWriter.close();
     }
 
 
