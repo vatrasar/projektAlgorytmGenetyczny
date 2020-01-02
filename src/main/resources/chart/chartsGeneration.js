@@ -2,7 +2,7 @@ var ctx = document.getElementById('chart').getContext('2d');
 
 var chart=null;
 function makeChart(content) {
-
+    yLabe="Wartości funkcji";
     var json=JSON.parse(content);
     var datas=[];
     var labelData1='Wartości funkcji';
@@ -70,7 +70,12 @@ function makeChart(content) {
 
 
 
+                        },
+                        scaleLabel:{
+                            display:true,
+                            labelString:"Iteracje"
                         }
+
                     }
                 ],
                 yAxes:[
@@ -78,6 +83,11 @@ function makeChart(content) {
                         ticks:{
 
 
+                        }
+                        ,
+                        scaleLabel:{
+                            display:true,
+                            labelString:"Wartości funkcji"
                         }
                     }
                 ]
