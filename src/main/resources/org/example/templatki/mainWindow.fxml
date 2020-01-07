@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="529.0001068115234" prefWidth="790.9998779296875" snapToPixel="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainWindowControler">
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="791.0" snapToPixel="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.MainWindowControler">
   <children>
-    <VBox id="menuBoczne" prefHeight="528.0" prefWidth="139.0" HBox.hgrow="ALWAYS">
+    <VBox id="menuBoczne" prefHeight="530.0" prefWidth="139.0" HBox.hgrow="ALWAYS">
       <children>
         <ImageView blendMode="SOFT_LIGHT" fitHeight="123.34684753417969" fitWidth="139.00000377104018" pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="image" visible="true" VBox.vgrow="ALWAYS">
           <image>
@@ -38,7 +38,7 @@
                </font></Button>
       </children>
     </VBox>
-    <StackPane id="" fx:id="mainPane" prefHeight="529.0" prefWidth="651.9998779296875" HBox.hgrow="ALWAYS" />
+    <StackPane id="" fx:id="mainPane" maxHeight="530.0" maxWidth="652.0" prefHeight="530.0" prefWidth="652.0" HBox.hgrow="ALWAYS" />
   </children>
   <stylesheets>
     <URL value="@../../../css/mainPageStyles.css" />

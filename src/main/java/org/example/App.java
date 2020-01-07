@@ -23,12 +23,15 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("templatki/mainWindow"));
         stage.setTitle("Symulator AG");
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMaxHeight(560);
+        stage.setMaxWidth(791);
+        stage.setMinHeight(500);
+        stage.setMinWidth(600);
         stage.setScene(scene);
-
-
-
         stage.show();
+
+
     }
 
     static void setRoot(String fxml) throws IOException {
