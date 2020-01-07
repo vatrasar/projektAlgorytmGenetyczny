@@ -111,7 +111,7 @@
               <children>
                 <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Prawdopodobieństwo krzyżowania" wrapText="true">
+                    <Label prefHeight="38.0" text="Prawdopodobieństwo krzyżowania" wrapText="true">
                                  <font>
                                     <Font size="15.0" />
                                  </font></Label>

@@ -104,7 +104,13 @@ public class ExportController {
 
                 List<Double>stdValues= AgStatistic.getStdForGenerations(generationsValues);
                 try {
-                    Files.delete(new File(file.getAbsolutePath()+"/data.txt").toPath());
+                    File dataFile=new File(file.getAbsolutePath()+"/data.txt");
+
+                    try {
+                        Files.delete(new File(file.getAbsolutePath()+"/data.txt").toPath());
+                    } catch (IOException e) {
+
+                    }
                     printWriter = new PrintWriter(file.getAbsolutePath()+"/data.txt");
                     for(int i=0;i<avgForGenerationsList.size();i++)
                     {
@@ -112,8 +118,6 @@ public class ExportController {
                     }
                     printWriter.close();
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
