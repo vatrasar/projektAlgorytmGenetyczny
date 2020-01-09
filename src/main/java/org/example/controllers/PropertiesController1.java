@@ -59,12 +59,12 @@ public class PropertiesController1 implements Controller, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setDefaultValues();
         setTextFieldsForNumbers();
-        Tooltip tooltip=new Tooltip("Wartości w procentach");
+//        Tooltip tooltip=new Tooltip("Wartości w procentach");
         Tooltip precisionTooltip=new Tooltip("Do którego miejsca po przecinku. Maksymalnie 8");
         Tooltip runsTooltip=new Tooltip("Maksymalnie 100");
         precisionTooltip.setShowDelay(Duration.millis(10));
         runsTooltip.setShowDelay(Duration.millis(10));
-        probTournamentWinTextField.setTooltip(tooltip);
+//        probTournamentWinTextField.setTooltip(tooltip);
         precisionTextField.setTooltip(precisionTooltip);
         runsNumberTextField1.setTooltip(runsTooltip);
 

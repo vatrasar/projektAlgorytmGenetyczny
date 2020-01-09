@@ -25,7 +25,7 @@ public class App extends Application {
         stage.setTitle("Symulator AG");
         stage.setResizable(true);
         stage.setMaxHeight(560);
-        stage.setMaxWidth(791);
+        stage.setMaxWidth(800);
         stage.setMinHeight(500);
         stage.setMinWidth(600);
         stage.setScene(scene);

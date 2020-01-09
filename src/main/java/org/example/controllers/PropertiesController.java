@@ -160,8 +160,8 @@ public class PropertiesController implements Initializable,Controller {
         Tooltip precisionTooltip=new Tooltip("Do którego miejsca po przecinku");
         precisionTooltip.setShowDelay(Duration.millis(10));
 
-        probMutationTextField.setTooltip(tooltip);
-        probCrossTextField.setTooltip(tooltip);
+//        probMutationTextField.setTooltip(tooltip);
+//        probCrossTextField.setTooltip(tooltip);
 
 
 

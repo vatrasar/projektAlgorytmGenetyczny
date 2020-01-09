@@ -36,13 +36,13 @@
                   <Insets left="15.0" />
                </padding>
         </HBox>
-        <HBox alignment="CENTER" prefHeight="322.0" prefWidth="552.0">
+        <HBox alignment="CENTER" prefHeight="285.0" prefWidth="552.0">
           <children>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label prefHeight="38.0" text="Liczba Generacji">
+                    <Label prefHeight="61.0" text="Liczba Generacji">
                       <font>
                         <Font size="15.0" />
                       </font>
@@ -57,9 +57,9 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Rodzaj selekcji">
+                    <Label prefHeight="61.0" text="Rodzaj selekcji">
                                  <font>
                                     <Font size="15.0" />
                                  </font></Label>
@@ -80,9 +80,9 @@
                     <Insets top="10.0" />
                   </VBox.margin>
                 </VBox>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Funkcja">
+                    <Label prefHeight="61.0" text="Funkcja">
                                  <font>
                                     <Font size="15.0" />
                                  </font></Label>
@@ -109,9 +109,9 @@
             </VBox>
             <VBox id="" prefHeight="286.0" prefWidth="256.0">
               <children>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="246.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label prefHeight="38.0" text="Prawdopodobieństwo krzyżowania" wrapText="true">
+                    <Label prefHeight="61.0" prefWidth="246.0" text="Prawdopodobieństwo krzyżowania" wrapText="true">
                                  <font>
                                     <Font size="15.0" />
                                  </font></Label>
@@ -125,9 +125,9 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                 </VBox>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label text="Prawdopodobieństwo mutacji">
+                    <Label prefHeight="61.0" text="Prawdopodobieństwo mutacji">
                                  <font>
                                     <Font size="15.0" />
                                  </font></Label>
@@ -141,9 +141,9 @@
                     <Insets top="10.0" />
                   </VBox.margin>
                 </VBox>
-                <VBox prefHeight="80.0" prefWidth="245.0" styleClass="propertiesRowVbox">
+                <VBox prefHeight="83.0" prefWidth="245.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label prefWidth="256.0" text="Rozmiar populacji" wrapText="true">
+                    <Label prefHeight="61.0" prefWidth="256.0" text="Rozmiar populacji" wrapText="true">
                       <VBox.margin>
                         <Insets fx:id="x1" />
                       </VBox.margin>
@@ -168,7 +168,7 @@
             <Insets left="20.0" right="20.0" />
           </padding>
         </HBox>
-        <HBox alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="552.0">
+        <HBox alignment="BOTTOM_CENTER" prefHeight="8.0" prefWidth="552.0">
           <children>
             <Button id="" fx:id="nextButton" mnemonicParsing="false" onMouseClicked="#nextPropertiesPage" prefHeight="32.0" prefWidth="249.0" styleClass="startButton" text="Dalej">
               <font>
@@ -188,7 +188,7 @@
         </HBox>
       </children>
       <padding>
-        <Insets bottom="50.0" left="50.0" right="50.0" top="10.0" />
+        <Insets bottom="30.0" left="50.0" right="50.0" top="10.0" />
       </padding>
          <VBox.margin>
             <Insets />
