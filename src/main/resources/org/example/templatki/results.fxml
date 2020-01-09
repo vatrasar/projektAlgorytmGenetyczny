@@ -29,7 +29,7 @@
       <WebView fx:id="chart" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
       <VBox prefHeight="61.0" prefWidth="652.0">
          <children>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="title" text="Wyniki w ostatniej generacji">
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="title" text="Wyniki w ostatniej generacji:">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>

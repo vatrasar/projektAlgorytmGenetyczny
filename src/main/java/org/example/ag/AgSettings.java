@@ -122,32 +122,35 @@ public class AgSettings {
      }
 
      public void setProbTournamentWin(double probTournamentWin) throws Exception {
+          probTournamentWin*=100;
           isBigerThen(probTournamentWin,0,"Prawdopodobieństwo wygrania turnieju musi byc wieksze od 0");
 
           if (probTournamentWin<=100){
                this.probTournamentWin = probTournamentWin;
           } else {
-               throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
+               throw new Exception("Wartości procentowe nie mogą przekraczać 1");
           }
           selectionType.setTournamentProb(probTournamentWin);
      }
 
      public void setProbMutation(double probMutation) throws Exception {
+          probMutation*=100;
           isBigerThen(probMutation,0,"Prawdopodobieństwo mutacji musi byc wieksze od 0");
           if (probMutation<=100) {
                this.probMutation = probMutation;
           } else {
-               throw new Exception("Wartości procentowe nie mogą przekraczać 100%");
+               throw new Exception("Wartości procentowe nie mogą przekraczać 1");
           }
      }
 
      public void setProbCross(double probCross) throws Exception {
+          probCross*=100;
           isBigerThen(probCross,0,"Prawdopodobieństwo krzyżowania musi byc wieksze od 0");
           if (probCross<=100) {
                this.probCross = probCross;
           }
           else {
-               throw new Exception("Wartości procentowe nie mogą przekraczać 100% i muszą byc większe od zera");
+               throw new Exception("Wartości procentowe nie mogą przekraczać 1 i muszą byc większe od zera");
           }
      }
 

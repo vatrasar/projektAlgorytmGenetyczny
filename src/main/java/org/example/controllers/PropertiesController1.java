@@ -250,7 +250,7 @@ public class PropertiesController1 implements Controller, Initializable {
 
         precisionTextField.setText("3");
 
-        probTournamentWinTextField.setText("80");
+        probTournamentWinTextField.setText("0.8");
 
         funcDiminsionalTextField.setText("1");
         runsNumberTextField1.setText("1");

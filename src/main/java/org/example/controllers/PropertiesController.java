@@ -182,12 +182,12 @@ public class PropertiesController implements Initializable,Controller {
         selectionTypeChoiceBox.setValue(selectionTypeChoiceBox.getItems().get(0));
         functionTypeChoiceBox.setValue(functionTypeChoiceBox.getItems().get(0));
 
-        probCrossTextField.setText("70");
-        probMutationTextField.setText("0.1");
+        probCrossTextField.setText("0.7");
+        probMutationTextField.setText("0.001");
 
         generationsNumberTextField.setText("300");
 
-        populationSizeTextField.setText("160");
+        populationSizeTextField.setText("100");
 
     }
 
