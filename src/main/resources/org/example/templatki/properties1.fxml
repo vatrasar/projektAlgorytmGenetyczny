@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<VBox depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController1">
+<VBox depthTest="INHERIT" prefHeight="529.0" prefWidth="652.0" styleClass="mainPane" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.PropertiesController1">
   <children>
   <HBox minHeight="18.0" prefHeight="52.0" prefWidth="652.0">
     <children>
@@ -68,7 +64,7 @@
                 </VBox>
                 <VBox prefHeight="65.0" prefWidth="256.0" styleClass="propertiesRowVbox">
                   <children>
-                    <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="32.0" prefWidth="256.0" text="Liczba wymiarów funkcji" underline="false" wrapText="true">
+                    <Label disable="false" focusTraversable="false" pickOnBounds="false" prefHeight="32.0" prefWidth="256.0" text="Liczba zmiennych funkcji" underline="false" wrapText="true">
                       <VBox.margin>
                         <Insets fx:id="x1" />
                       </VBox.margin>
